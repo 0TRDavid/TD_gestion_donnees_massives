@@ -17,8 +17,10 @@ from extraction_metadonnees_descriptives import extraire_metadonnees_descriptive
 # 1. PARAMÈTRES À ADAPTER À TON ORDINATEUR
 # ============================================================
 
-REPERTOIRE_DATALAKE = os.getcwd()  # Répertoire racine
-
+# Indépendant du répertoire courant ; surcharge possible via la variable DATALAKE_DIR.
+REPERTOIRE_DATALAKE = os.environ.get("DATALAKE_DIR") or os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))
+)
 REPERTOIRE_SOURCE = os.path.join(REPERTOIRE_DATALAKE, "0_SOURCE_WEB")
 REPERTOIRE_LANDING = os.path.join(REPERTOIRE_DATALAKE, "1_LANDING_ZONE")
 

@@ -2,7 +2,7 @@ import os
 import shutil
 
 REPERTOIRE_CURATED = "2_CURATED_ZONE/METADONNEES"
-REPERTOIRE_DBT_SEEDS = "3_dbt_transformation/seeds"
+REPERTOIRE_DBT_SEEDS = "dbt_transformation/seeds"
 
 fichiers_csv = [
     "metadonnee_technique.csv",

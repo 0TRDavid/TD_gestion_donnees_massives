@@ -22,3 +22,15 @@ donc sous dossier : Glassdoor/avis et soc
 
 
 ensuite on envoi les infos vers le dossier seed de dbt pour que DBT fasse l'ELT 
+
+
+
+Etape 1 :
+
+Lancement de la Pipeline : Ingestion des données sources vers la Landing Zone, création des métadonnées puis au choix, mise à jour des seeds DBT
+
+Prérequis : Docker et python installés sur la machine
+
+sur Windows avec PowerShell :  bash ./lancement_pipeline.sh 
+Sur Linux : a toi de me dire David
+
