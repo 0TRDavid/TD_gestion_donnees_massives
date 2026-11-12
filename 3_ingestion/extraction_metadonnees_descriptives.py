@@ -1,151 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-PHASE 1 : Copie des fichiers HTML de 0_SOURCE_WEB vers 1_LANDING_ZONE
-et création des métadonnées techniques et descriptives.
-
-Structure des métadonnées : verticale (OBJET_ID ; COLONNE ; VALEUR)
-"""
-
-import os
-import re
-import shutil
-import csv
-from datetime import datetime
-import hashlib # pour créer un identifiant unique basé sur le nom du fichier HTML
-
-# ============================================================
-# 1. PARAMÈTRES À ADAPTER À TON ORDINATEUR
-# ============================================================
-
-REPERTOIRE_DATALAKE = os.getcwd()  # Répertoire racine
-
-REPERTOIRE_SOURCE = os.path.join(REPERTOIRE_DATALAKE, "0_SOURCE_WEB")
-REPERTOIRE_LANDING = os.path.join(REPERTOIRE_DATALAKE, "1_LANDING_ZONE")
-
-REPERTOIRE_METADONNEES = os.path.join(
-    REPERTOIRE_DATALAKE,
-    "2_CURATED_ZONE",
-    "METADONNEES"
-)
-
-FICHIER_METADONNEES_TECHNIQUES = os.path.join(
-    REPERTOIRE_METADONNEES,
-    "metadonnee_technique.csv"
-)
-
-FICHIER_METADONNEES_DESCRIPTIVES = os.path.join(
-    REPERTOIRE_METADONNEES,
-    "metadonnee_descriptive.csv"
-)
-
-# ============================================================
-# 2. CRÉATION DES DOSSIERS SI BESOIN
-# ============================================================
-
-os.makedirs(REPERTOIRE_SOURCE, exist_ok=True)
-os.makedirs(REPERTOIRE_LANDING, exist_ok=True)
-os.makedirs(REPERTOIRE_METADONNEES, exist_ok=True)
-
-# ============================================================
-# 3. FONCTIONS
-# ============================================================
-
-def extraire_informations_nom_fichier(nom_fichier):
-    """
-    Exemple :
-    13546-INFO-EMP-LINKEDIN-FR-1599984246.html
-
-    Retourne :
-    - identifiant : 13546
-    - categorie : INFO_EMPLOI
-    - site : LINKEDIN
-    """
-
-    nom_sans_extension = os.path.splitext(nom_fichier)[0]
-
-    elements = nom_sans_extension.split("-")
-
-    if len(elements) < 5:
-        return None
-
-    identifiant = hashlib.md5(nom_sans_extension.encode()).hexdigest() # identifiant unique basé sur le nom du fichier HTML
-    type_information = elements[1] # Info si AVIS, 
-    categorie = elements[2]
-    site = elements[3]
-
-
-    if type_information == "INFO" and categorie == "EMP":
-        categorie_metier = "OFFRE_EMPLOI"
-        categorie = "EMP"
-    elif type_information == "INFO" and categorie == "SOC":
-        categorie_metier = "INFO_SOCIETE"
-        categorie = "SOC"
-    elif type_information == "AVIS" and categorie == "SOC":
-        categorie_metier = "AVIS_SOCIETE"
-        categorie = "AVIS"
-    else:
-        categorie_metier = type_information + "_" + categorie
-
-    return {
-        "identifiant": identifiant,
-        "type_information": categorie_metier,
-        "site": site,
-        "sous-dossier": categorie, # pour le sous dossier
-    }
-
-
-def copier_fichier_vers_landing_zone(chemin_fichier_source, informations):
-    """
-    Copie le fichier HTML vers :
-    1_LANDING_ZONE / SITE / CATEGORIE
-    """
-
-    site = informations["site"]
-    categorie = informations["sous-dossier"]
-
-    repertoire_cible = os.path.join(
-        REPERTOIRE_LANDING,
-        site,
-        categorie
-    )
-
-    os.makedirs(repertoire_cible, exist_ok=True)
-
-    nom_fichier = os.path.basename(chemin_fichier_source)
-
-    chemin_fichier_cible = os.path.join(
-        repertoire_cible,
-        nom_fichier
-    )
-
-    shutil.copy2(chemin_fichier_source, chemin_fichier_cible)
-
-    return chemin_fichier_cible
-
-
-def creer_metadonnees_techniques(
-    objet_id,
-    nom_fichier_source,
-    chemin_fichier_source,
-    nom_fichier_cible,
-    chemin_fichier_cible,
-    categorie_metier
-):
-
-    date_heure_recuperation = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    metadonnees = [
-        [objet_id, "date_heure_de_recuperation", date_heure_recuperation],
-        [objet_id, "nom_du_fichier_source", nom_fichier_source],
-        [objet_id, "provenance_du_fichier_source", chemin_fichier_source],
-        [objet_id, "nom_du_fichier_cible", nom_fichier_cible],
-        [objet_id, "localisation_du_fichier_cible", chemin_fichier_cible],
-        [objet_id, "type_du_fichier_source", "html"],
-        [objet_id, "categorie_du_fichier_source", categorie_metier]
-    ]
-
-    return metadonnees
-
 import html
 import json
 import logging
@@ -236,11 +88,6 @@ def _gdglobals_employeur(contenu):
     if not m:
         return {}
     return {k: v for k, v in re.findall(r"'(\w+)'\s*:\s*\"([^\"]*)\"", m.group(1))}
-
-
-def _meta(contenu, attribut, nom):
-    m = re.search(r'<meta[^>]+%s=["\']%s["\'][^>]*content=["\']([^"\']*)' % (attribut, re.escape(nom)), contenu, re.I)
-    return html.unescape(m.group(1)).strip() if m else None
 
 
 def _url_canonique(contenu):
@@ -400,8 +247,10 @@ def _extraire_info_societe(contenu, sortie, vus):
         for lib, pct in re.findall(r"<label class='[^']*pct'>(.*?)</label>.*?<span class='strong num[^']*'>(\d+)</span>",
                                    bloc.group(1), re.S):
             ajout(prefixe + "_pct", "%s | %s" % (_texte(lib, False), pct))
-        moy = re.search(r"class='[^']*'>\s*(\d[.,]\d)\s*</", bloc.group(1))
-        ajout(prefixe + "_moyenne", _decimal(moy.group(1)) if moy else None)
+        moy = re.search(r'difficultyLabel[^>]*>\s*(\d[.,]\d)\s*</div>\s*([^<]*)', bloc.group(1))
+        if moy:
+            ajout(prefixe + "_moyenne", _decimal(moy.group(1)))
+            ajout(prefixe + "_libelle", _texte(moy.group(2), False))
 
 
 # ----------------------------------------------------------------------------
@@ -468,7 +317,7 @@ def _extraire_avis_societe(contenu, sortie, vus):
                        ("date_dernier_avis", r'"lastReviewDateTime":"([^"]+)"')]:
         m = re.search(regex, contenu)
         ajout(cle, m.group(1) if m else None)
-    m = re.search(r'"ratings":(\{"overallRating":.*?"__typename":"EmployerRatings"\})', contenu)
+    m = re.search(r'ratings":(\{"overallRating":.*?"__typename":"EmployerRatings"\})', contenu)
     bloc_notes = m.group(1) if m else ""
     for cle, src in [("note_globale", "overallRating"), ("note_culture_valeurs_globale", "cultureAndValuesRating"),
                      ("note_opportunites_carriere_globale", "careerOpportunitiesRating"),
@@ -564,105 +413,3 @@ def extraire_metadonnees_descriptives(chemin_fichier_html, infos_fichier):
 
     _ajouter(metadonnees, vus, "type_page", type_donnee)
     return metadonnees
-
-def ecrire_fichier_csv(chemin_fichier_csv, liste_lignes):
-
-    with open(
-        chemin_fichier_csv,
-        "w",
-        encoding="utf-8",
-        errors="ignore",
-        newline=""
-    ) as fichier_csv:
-
-        writer = csv.writer(
-            fichier_csv,
-            delimiter=";",
-            quotechar='"',
-            quoting=csv.QUOTE_ALL,
-            lineterminator="\n"
-        )
-
-        writer.writerows(liste_lignes)
-
-
-# ============================================================
-# 4. TRAITEMENT PRINCIPAL
-# ============================================================
-
-metadonnees_techniques = [
-    ["OBJET_ID", "COLONNE", "VALEUR"]
-]
-
-metadonnees_descriptives = [
-    ["OBJET_ID", "COLONNE", "VALEUR"]
-]
-
-print("Début du traitement")
-print("Dossier source :", REPERTOIRE_SOURCE)
-print("Dossier landing zone :", REPERTOIRE_LANDING)
-
-fichiers_html = [
-    nom_fichier
-    for nom_fichier in os.listdir(REPERTOIRE_SOURCE)
-    if nom_fichier.lower().endswith(".html")
-]
-
-print("Nombre de fichiers HTML trouvés :", len(fichiers_html))
-
-for nom_fichier in fichiers_html:
-
-    informations = extraire_informations_nom_fichier(nom_fichier)
-
-    if informations is None:
-        print("Fichier ignoré, nom non conforme :", nom_fichier)
-        continue
-
-    chemin_fichier_source = os.path.join(
-        REPERTOIRE_SOURCE,
-        nom_fichier
-    )
-
-    chemin_fichier_cible = copier_fichier_vers_landing_zone(
-        chemin_fichier_source,
-        informations
-    )
-
-    objet_id = informations["identifiant"]
-
-    metadonnees_techniques.extend(
-        creer_metadonnees_techniques(
-            objet_id=objet_id,
-            nom_fichier_source=nom_fichier,
-            chemin_fichier_source=chemin_fichier_source,
-            nom_fichier_cible=nom_fichier,
-            chemin_fichier_cible=chemin_fichier_cible,
-            categorie_metier=informations["type_information"]
-        )
-    )
-
-    metadonnees_descriptives_fichier = extraire_metadonnees_descriptives(
-        chemin_fichier_cible,extraire_informations_nom_fichier(nom_fichier)
-    )
-
-    for colonne, valeur in metadonnees_descriptives_fichier:
-        metadonnees_descriptives.append(
-            [objet_id, colonne, valeur]
-        )
-
-    print("Fichier copié :", nom_fichier)
-    print("Destination :", chemin_fichier_cible)
-
-ecrire_fichier_csv(
-    FICHIER_METADONNEES_TECHNIQUES,
-    metadonnees_techniques
-)
-
-ecrire_fichier_csv(
-    FICHIER_METADONNEES_DESCRIPTIVES,
-    metadonnees_descriptives
-)
-
-print("Traitement terminé")
-print("Métadonnées techniques :", FICHIER_METADONNEES_TECHNIQUES)
-print("Métadonnées descriptives :", FICHIER_METADONNEES_DESCRIPTIVES)
