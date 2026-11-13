@@ -28,6 +28,7 @@ services:
     env_file: .env
     environment:
       POSTGRES_HOST: postgres_db
+    ports: ["8080:8080"]          # documentation dbt : http://localhost:8080
     depends_on:
       ingestion:
         condition: service_completed_successfully

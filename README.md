@@ -19,6 +19,7 @@ Cette commande reconstruit tout le pipeline à partir des fichiers HTML de `0_SO
 3. `dbt` transforme les données et exécute les tests, jusqu'au modèle décisionnel dans le schéma `marts`.
 
 Connexion à la base (Power BI ou autre client SQL) : `localhost:5432`, base, utilisateur et mot de passe définis dans `.env`, schéma `marts`.
+Doc automatique de DBT généré et servi sur le lien : http://localhost:8080
 
 ## Arborescence
 
