@@ -1,4 +1,5 @@
 # Fichier .gitignore
 .venv
+*.pyc
 2_datalake/1_LANDING_ZONE
 2_datalake/2_CURATED_ZONE
