@@ -1,0 +1,7 @@
+
+target/
+dbt_packages/
+logs/
+
+/seeds/metadonnee_technique.csv
+/seeds/metadonnee_descriptive.csv

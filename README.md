@@ -1,36 +1,65 @@
-# TD_gestion_donnees_massives
-Travail phase 1 :
+# TD Data Lakehouse — Gestion de données massives
 
-py SCRIPT/verif_fichiers.py "0_SOURCE_WEB"
+Pipeline complet à partir de fichiers HTML LinkedIn / Glassdoor :
+**Collecte → Ingestion → Extraction → Transformation → Analyse**.
 
+## Arborescence
 
-AVIS-SOC-GLASSDOOR                                                                                                                                                          
-INFO-EMP-LINKEDIN-FR
-INFO-SOC-GLASSDOOR
+```
+TD_gestion_donnees_massives/
+├── DATALAKE/                     ← zones du datalake (arborescence des consignes)
+│   ├── 0_SOURCE_WEB/             ← HTML source (ne jamais modifier)
+│   ├── 1_LANDING_ZONE/           ← copie à l'identique des HTML
+│   │   ├── GLASSDOOR/{AVIS,SOC}/
+│   │   └── LINKEDIN/EMP/
+│   └── 2_CURATED_ZONE/
+│       └── METADONNEES/          ← metadonnee_technique.csv, metadonnee_descriptive.csv
+│
+├── ingestion/                    ← Phases 1 et 2 (Python)
+│   ├── config.py                 ← tous les chemins du projet
+│   ├── ingestion.py              ← copie SOURCE → LANDING + métadonnées
+│   ├── extraction_metadonnees_descriptives.py
+│   └── export_dbt.py             ← copie des métadonnées vers les seeds dbt
+│
+├── dbt_transformation/           ← Phase 3 (ELT dans PostgreSQL = 3_PRODUCTION_ZONE)
+│   ├── seeds/                    ← généré, non versionné
+│   └── models/
+│       ├── staging/              ← nettoyage / typage
+│       ├── intermediate/         ← pivot du format vertical
+│       └── marts/                ← modèle décisionnel (étoile)
+│
+├── consignes/                    ← sujets et scripts d'exemple du prof
+├── docker-compose.yml            ← PostgreSQL
+├── lancement_pipeline.sh         ← lance tout le pipeline
+├── requirements.txt
+└── .env.example                  ← à copier en .env
+```
 
-donc sous dossier : Glassdoor/avis et soc
-                    Linkedin/emp
+| Phase | Consigne | Où |
+|---|---|---|
+| 1 — Ingestion | HTML → LANDING ZONE + métadonnées techniques | `ingestion/ingestion.py` |
+| 2 — Extraction | métadonnées descriptives → CURATED ZONE | `ingestion/extraction_metadonnees_descriptives.py` |
+| 3 — ETL / DWH | modèle décisionnel | `dbt_transformation/` |
+| 4 — Reporting | tableaux de bord BI | à venir |
 
+## Lancement
 
-0_SOURCE_WEB
-      ↓  copie brute du fichier
-1_LANDING_ZONE\LINKEDIN\EMP\...
-1_LANDING_ZONE\GLASSDOOR\SOC\...
-      ↓  lecture du HTML + extraction des informations
-2_CURATED_ZONE\METADONNEES\metadonnee_technique.csv
-2_CURATED_ZONE\METADONNEES\metadonnee_descriptive.csv
+Prérequis : Docker Desktop lancé, Python ≥ 3.9, un shell bash.
 
+```bash
+cp .env.example .env
+```
 
-ensuite on envoi les infos vers le dossier seed de dbt pour que DBT fasse l'ELT 
+Linux / macOS / Git Bash :
 
+```bash
+./lancement_pipeline.sh
+```
 
+Windows PowerShell : ne pas utiliser `bash` seul (il lance WSL), passer par Git Bash :
 
-Etape 1 :
+```powershell
+& "C:\Program Files\Git\bin\bash.exe" ./lancement_pipeline.sh
+```
 
-Lancement de la Pipeline : Ingestion des données sources vers la Landing Zone, création des métadonnées puis au choix, mise à jour des seeds DBT
-
-Prérequis : Docker et python installés sur la machine
-
-sur Windows avec PowerShell :  bash ./lancement_pipeline.sh 
-Sur Linux : a toi de me dire David
-
+Option `-y` : remplace les seeds dbt sans demander confirmation.
