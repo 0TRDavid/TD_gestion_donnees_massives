@@ -1,0 +1,202 @@
+table fct_avis
+	lineageTag: adac31df-f3d9-4c5a-b766-108662113cef
+
+	column avis_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 06a6123e-6294-419b-99e4-0b24e6f3c017
+		summarizeBy: sum
+		sourceColumn: avis_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column entreprise_sk
+		dataType: string
+		lineageTag: 02d39143-9cc2-48ef-9bca-e225272a92f4
+		summarizeBy: none
+		sourceColumn: entreprise_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_avis_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: d04b4024-4917-4b26-94a6-01798b242c70
+		summarizeBy: none
+		sourceColumn: date_avis_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column note_globale
+		dataType: double
+		lineageTag: 9c45eb6a-8269-44d9-9c8a-d37903c7c9b5
+		summarizeBy: sum
+		sourceColumn: note_globale
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column note_culture_valeurs
+		dataType: double
+		lineageTag: a74a8ebe-47c8-4b20-853c-d67b664c5689
+		summarizeBy: sum
+		sourceColumn: note_culture_valeurs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column note_equilibre_vie_pro
+		dataType: double
+		lineageTag: 84311a2e-5dbe-4f21-83c0-88d00d2e122c
+		summarizeBy: sum
+		sourceColumn: note_equilibre_vie_pro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column note_equipe_dirigeante
+		dataType: double
+		lineageTag: 3b49e5ae-1d77-4b5e-8135-dd3ee4471f65
+		summarizeBy: sum
+		sourceColumn: note_equipe_dirigeante
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column note_opportunites_carriere
+		dataType: double
+		lineageTag: 8c1f937e-4870-440b-8717-ebec084492d7
+		summarizeBy: sum
+		sourceColumn: note_opportunites_carriere
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column note_remuneration_avantages
+		dataType: double
+		lineageTag: 07210bae-f974-4336-b7ba-e1bacb31683c
+		summarizeBy: sum
+		sourceColumn: note_remuneration_avantages
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column recommande_employeur
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5cb732a1-2069-4e62-afec-9733b98a1909
+		summarizeBy: none
+		sourceColumn: recommande_employeur
+
+		annotation SummarizationSetBy = Automatic
+
+	column approuve_pdg
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a6458569-7f6c-4206-9874-5db29ac318dd
+		summarizeBy: none
+		sourceColumn: approuve_pdg
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_avis
+		dataType: int64
+		formatString: 0
+		lineageTag: 828c9eda-382b-40e4-b3ef-5116f3ca7402
+		summarizeBy: sum
+		sourceColumn: nb_avis
+
+		annotation SummarizationSetBy = Automatic
+
+	column perspective_entreprise
+		dataType: string
+		lineageTag: ad9469b6-20dc-4dad-b12c-952012d73cb0
+		summarizeBy: none
+		sourceColumn: perspective_entreprise
+
+		annotation SummarizationSetBy = Automatic
+
+	column statut_auteur
+		dataType: string
+		lineageTag: 1e889079-780c-4f6c-902a-a47e780a8496
+		summarizeBy: none
+		sourceColumn: statut_auteur
+
+		annotation SummarizationSetBy = Automatic
+
+	column est_employe_actuel
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 09342383-1311-4a8d-a245-b3679d78ef6b
+		summarizeBy: none
+		sourceColumn: est_employe_actuel
+
+		annotation SummarizationSetBy = Automatic
+
+	column poste_auteur
+		dataType: string
+		lineageTag: 0515caca-a0b8-4279-a8ad-363be7285658
+		summarizeBy: none
+		sourceColumn: poste_auteur
+
+		annotation SummarizationSetBy = Automatic
+
+	column ville_auteur
+		dataType: string
+		lineageTag: b55ca486-52fa-4983-bf56-d21bb42d3dbf
+		summarizeBy: none
+		sourceColumn: ville_auteur
+
+		annotation SummarizationSetBy = Automatic
+
+	column titre
+		dataType: string
+		lineageTag: 58ad08e9-435f-4b06-835f-da4df38343aa
+		summarizeBy: none
+		sourceColumn: titre
+
+		annotation SummarizationSetBy = Automatic
+
+	column avantages
+		dataType: string
+		lineageTag: 6a134159-f1c6-4a0c-96bd-a953fc05ecd4
+		summarizeBy: none
+		sourceColumn: avantages
+
+		annotation SummarizationSetBy = Automatic
+
+	column inconvenients
+		dataType: string
+		lineageTag: 3f7dae97-7f2e-4379-864d-d4bc3f7ceefa
+		summarizeBy: none
+		sourceColumn: inconvenients
+
+		annotation SummarizationSetBy = Automatic
+
+	column conseils_direction
+		dataType: string
+		lineageTag: 50fd74f2-dba1-4537-81a3-0eff46de87ce
+		summarizeBy: none
+		sourceColumn: conseils_direction
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_avis = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres_db"),
+				    marts_fct_avis = Source{[Schema="marts",Item="fct_avis"]}[Data]
+				in
+				    marts_fct_avis
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

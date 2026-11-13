@@ -4,3 +4,7 @@
 __pycache__/
 2_datalake/1_LANDING_ZONE
 2_datalake/2_CURATED_ZONE
+
+# Power BI (projet .pbip) : cache des données et réglages propres à chaque poste
+4_dataviz_pbi/**/.pbi/cache.abf
+4_dataviz_pbi/**/.pbi/localSettings.json

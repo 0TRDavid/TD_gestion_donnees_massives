@@ -1,0 +1,165 @@
+table fct_offres
+	lineageTag: c5d9de88-77e9-44a0-ab06-f23273cac67d
+
+	column id_offre_linkedin
+		dataType: int64
+		formatString: 0
+		lineageTag: 838e5632-62c6-4ad8-8df1-d4590f424951
+		summarizeBy: sum
+		sourceColumn: id_offre_linkedin
+
+		annotation SummarizationSetBy = Automatic
+
+	column entreprise_sk
+		dataType: string
+		lineageTag: 0dbf3ae1-6949-4652-95dc-92d1ebcf3b22
+		summarizeBy: none
+		sourceColumn: entreprise_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_publication_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 32f9666e-7cc7-4464-ba80-515dd9fd2a19
+		summarizeBy: none
+		sourceColumn: date_publication_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_expiration_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 51d59e40-2c8f-46fb-8b0d-a46a0c8edd41
+		summarizeBy: sum
+		sourceColumn: date_expiration_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_offres
+		dataType: int64
+		formatString: 0
+		lineageTag: 04800263-66d4-4f95-bdd6-cc2908ae45dc
+		summarizeBy: sum
+		sourceColumn: nb_offres
+
+		annotation SummarizationSetBy = Automatic
+
+	column duree_publication_jours
+		dataType: int64
+		formatString: 0
+		lineageTag: aebd4e73-f749-4c85-9dfd-59dae6668dfd
+		summarizeBy: sum
+		sourceColumn: duree_publication_jours
+
+		annotation SummarizationSetBy = Automatic
+
+	column intitule_poste
+		dataType: string
+		lineageTag: d0df2850-6643-419f-b2ed-e04ff7d52fdf
+		summarizeBy: none
+		sourceColumn: intitule_poste
+
+		annotation SummarizationSetBy = Automatic
+
+	column niveau_hierarchique
+		dataType: string
+		lineageTag: 544bc3d2-7706-4fe1-8e4a-46a6a4397ffc
+		summarizeBy: none
+		sourceColumn: niveau_hierarchique
+
+		annotation SummarizationSetBy = Automatic
+
+	column type_emploi
+		dataType: string
+		lineageTag: b1aa0223-6782-483d-b8d1-5a27e08a2345
+		summarizeBy: none
+		sourceColumn: type_emploi
+
+		annotation SummarizationSetBy = Automatic
+
+	column fonction
+		dataType: string
+		lineageTag: 06ff6f8f-75b3-42c4-838e-238d864bb443
+		summarizeBy: none
+		sourceColumn: fonction
+
+		annotation SummarizationSetBy = Automatic
+
+	column secteurs
+		dataType: string
+		lineageTag: dc1e8558-393f-43ea-be60-629b011c0c85
+		summarizeBy: none
+		sourceColumn: secteurs
+
+		annotation SummarizationSetBy = Automatic
+
+	column localisation
+		dataType: string
+		lineageTag: de7c2760-5658-4736-b9ba-0ed51645e2b7
+		summarizeBy: none
+		sourceColumn: localisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column ville
+		dataType: string
+		lineageTag: d8d4a84b-02b0-49b4-bf0f-03a7a91d7fca
+		summarizeBy: none
+		sourceColumn: ville
+
+		annotation SummarizationSetBy = Automatic
+
+	column code_postal
+		dataType: string
+		lineageTag: 41bdd9ca-bdc0-4113-b717-2b928325f2cd
+		summarizeBy: none
+		sourceColumn: code_postal
+
+		annotation SummarizationSetBy = Automatic
+
+	column departement
+		dataType: string
+		lineageTag: 9b7b0b1a-58fa-43ec-805c-21af364fc6d5
+		summarizeBy: none
+		sourceColumn: departement
+
+		annotation SummarizationSetBy = Automatic
+
+	column pays
+		dataType: string
+		lineageTag: 1ba07e0f-72ec-4f85-b64c-29bdca3e053d
+		summarizeBy: none
+		sourceColumn: pays
+
+		annotation SummarizationSetBy = Automatic
+
+	column url_offre
+		dataType: string
+		lineageTag: c50981f6-492c-47a4-9c03-02539ced947f
+		summarizeBy: none
+		sourceColumn: url_offre
+
+		annotation SummarizationSetBy = Automatic
+
+	column description_offre
+		dataType: string
+		lineageTag: c488bb30-7718-4357-aa4f-c5a596428a72
+		summarizeBy: none
+		sourceColumn: description_offre
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_offres = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres_db"),
+				    marts_fct_offres = Source{[Schema="marts",Item="fct_offres"]}[Data]
+				in
+				    marts_fct_offres
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

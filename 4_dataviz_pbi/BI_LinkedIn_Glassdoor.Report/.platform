@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "BI_LinkedIn_Glassdoor"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "62e6fac6-a0c9-4539-aae8-2bf02035555f"
+  }
+}

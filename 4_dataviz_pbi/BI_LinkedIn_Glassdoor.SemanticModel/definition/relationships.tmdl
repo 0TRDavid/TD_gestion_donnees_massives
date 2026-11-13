@@ -1,0 +1,26 @@
+relationship cf2798fd-e038-4114-a232-4b3233f1f9bc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date_jour
+	toColumn: LocalDateTable_b4a16fbb-2c34-4517-8b27-60719f86411e.Date
+
+relationship AutoDetected_a83f44ed-9794-449f-9e69-3eea259a2890
+	fromColumn: fct_avis.entreprise_sk
+	toColumn: dim_entreprise.entreprise_sk
+
+relationship AutoDetected_0506f86a-570b-46dd-8b3b-5486395ba465
+	fromColumn: fct_offres.entreprise_sk
+	toColumn: dim_entreprise.entreprise_sk
+
+relationship 9ddc03a0-dd76-c64a-cbd5-18257eb99818
+	fromColumn: fct_offres.date_publication_sk
+	toColumn: dim_date.date_sk
+
+relationship 4c6a796d-cc52-b641-deab-1cc9ee31462c
+	fromColumn: fct_avis.date_avis_sk
+	toColumn: dim_date.date_sk
+
+relationship f257c8e2-dd7b-6dfd-1657-6d8461441a12
+	isActive: false
+	fromColumn: fct_offres.date_expiration_sk
+	toColumn: dim_date.date_sk
+

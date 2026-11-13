@@ -1,0 +1,299 @@
+table dim_entreprise
+	lineageTag: add10ece-3cbf-4fce-bdfc-e950ce724a27
+
+	column entreprise_sk
+		dataType: string
+		lineageTag: b5beb88d-32d4-46f7-9d47-14508f3e5c28
+		summarizeBy: none
+		sourceColumn: entreprise_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_entreprise
+		dataType: string
+		lineageTag: a21a4ceb-3971-4442-983e-62bba92b4738
+		summarizeBy: none
+		sourceColumn: source_entreprise
+
+		annotation SummarizationSetBy = Automatic
+
+	column a_fiche_glassdoor
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f6013b29-15bc-427a-bf7d-36fa8bf20524
+		summarizeBy: none
+		sourceColumn: a_fiche_glassdoor
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_employeur_glassdoor
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f94d9ba-3155-4267-854c-806f560bf3e2
+		summarizeBy: sum
+		sourceColumn: id_employeur_glassdoor
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_entreprise
+		dataType: string
+		lineageTag: 8456d11a-0193-4d6a-8558-544ae9b14021
+		summarizeBy: none
+		sourceColumn: nom_entreprise
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_normalise
+		dataType: string
+		lineageTag: 87445634-7650-44cc-b7dc-b3e17eff6a80
+		summarizeBy: none
+		sourceColumn: nom_normalise
+
+		annotation SummarizationSetBy = Automatic
+
+	column secteur_activite
+		dataType: string
+		lineageTag: d23f805c-07bd-4062-8c53-4bf927315f3a
+		summarizeBy: none
+		sourceColumn: secteur_activite
+
+		annotation SummarizationSetBy = Automatic
+
+	column secteur_glassdoor
+		dataType: string
+		lineageTag: c68df5c0-961c-4551-a45c-ab5d99b9d605
+		summarizeBy: none
+		sourceColumn: secteur_glassdoor
+
+		annotation SummarizationSetBy = Automatic
+
+	column industrie_glassdoor
+		dataType: string
+		lineageTag: 8075dda1-6c7d-4b5e-b01a-7822a8f91320
+		summarizeBy: none
+		sourceColumn: industrie_glassdoor
+
+		annotation SummarizationSetBy = Automatic
+
+	column type_entreprise
+		dataType: string
+		lineageTag: 6b8f772b-8b51-4b7f-ab85-ace47cc33b99
+		summarizeBy: none
+		sourceColumn: type_entreprise
+
+		annotation SummarizationSetBy = Automatic
+
+	column taille_entreprise
+		dataType: string
+		lineageTag: 6106589b-73f6-455d-9346-569165f3042c
+		summarizeBy: none
+		sourceColumn: taille_entreprise
+
+		annotation SummarizationSetBy = Automatic
+
+	column taille_entreprise_code
+		dataType: string
+		lineageTag: 35224bd5-22c0-43cd-8a3d-48ad87a699e1
+		summarizeBy: none
+		sourceColumn: taille_entreprise_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column chiffre_affaires_tranche
+		dataType: string
+		lineageTag: 83b78771-2748-46ff-b507-b3aaac7286bd
+		summarizeBy: none
+		sourceColumn: chiffre_affaires_tranche
+
+		annotation SummarizationSetBy = Automatic
+
+	column statut_entreprise_code
+		dataType: string
+		lineageTag: fdba3305-72cf-432e-bae3-58ee6d2ae929
+		summarizeBy: none
+		sourceColumn: statut_entreprise_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column siege_social
+		dataType: string
+		lineageTag: ccc97ce5-d58b-4bad-a96d-058eb25f34be
+		summarizeBy: none
+		sourceColumn: siege_social
+
+		annotation SummarizationSetBy = Automatic
+
+	column site_web
+		dataType: string
+		lineageTag: 2c0c2858-75c2-42cc-a707-707d747efca3
+		summarizeBy: none
+		sourceColumn: site_web
+
+		annotation SummarizationSetBy = Automatic
+
+	column nom_pdg
+		dataType: string
+		lineageTag: d5b991bd-34df-4b42-9b5c-3cd4ceb8a8c5
+		summarizeBy: none
+		sourceColumn: nom_pdg
+
+		annotation SummarizationSetBy = Automatic
+
+	column annee_creation
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ace3e05-25a2-4f51-929d-0235c14c10c9
+		summarizeBy: sum
+		sourceColumn: annee_creation
+
+		annotation SummarizationSetBy = Automatic
+
+	column note_globale
+		dataType: double
+		lineageTag: c31c2adf-d710-46d3-b2b3-475334432bfe
+		summarizeBy: sum
+		sourceColumn: note_globale
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column note_culture_valeurs
+		dataType: double
+		lineageTag: 142a969a-d59e-4adf-a604-f6ca43c5aa63
+		summarizeBy: sum
+		sourceColumn: note_culture_valeurs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column note_equilibre_vie_pro
+		dataType: double
+		lineageTag: 12f16222-8fde-4976-9241-15c8a29b15a5
+		summarizeBy: sum
+		sourceColumn: note_equilibre_vie_pro
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column note_equipe_dirigeante
+		dataType: double
+		lineageTag: a7744aa5-3574-4373-ae8f-a9cbd3b86f67
+		summarizeBy: sum
+		sourceColumn: note_equipe_dirigeante
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column note_opportunites_carriere
+		dataType: double
+		lineageTag: 0c51ae02-0c44-412b-a608-970065cd753c
+		summarizeBy: sum
+		sourceColumn: note_opportunites_carriere
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column note_remuneration_avantages
+		dataType: double
+		lineageTag: 41eb6caf-2c43-4fe0-967c-7e4823fc5995
+		summarizeBy: sum
+		sourceColumn: note_remuneration_avantages
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column taux_recommandation
+		dataType: double
+		lineageTag: 0d622490-e2b7-4ce2-9c2c-9038b1318cea
+		summarizeBy: sum
+		sourceColumn: taux_recommandation
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column taux_approbation_pdg
+		dataType: double
+		lineageTag: 8e6139c4-7e82-4029-89c3-fd39cd6b221f
+		summarizeBy: sum
+		sourceColumn: taux_approbation_pdg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column taux_perspective_positive
+		dataType: double
+		lineageTag: 07237a04-e044-4cf9-840d-fd5e15c2c6f9
+		summarizeBy: sum
+		sourceColumn: taux_perspective_positive
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nb_avis_total
+		dataType: int64
+		formatString: 0
+		lineageTag: d11902b8-cd7d-41ad-8aba-95ad6fc2f6dd
+		summarizeBy: sum
+		sourceColumn: nb_avis_total
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_salaires
+		dataType: int64
+		formatString: 0
+		lineageTag: 3474e559-52f2-4f8a-a31d-cf810189faaf
+		summarizeBy: sum
+		sourceColumn: nb_salaires
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_entretiens
+		dataType: int64
+		formatString: 0
+		lineageTag: 7632284a-2f95-4e92-95d7-aa511f687909
+		summarizeBy: sum
+		sourceColumn: nb_entretiens
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_offres_glassdoor
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d623af2-c880-4121-848c-eaa37d8c4487
+		summarizeBy: sum
+		sourceColumn: nb_offres_glassdoor
+
+		annotation SummarizationSetBy = Automatic
+
+	column entretien_difficulte_moyenne
+		dataType: double
+		lineageTag: 10d98980-3d3f-4d2b-88a5-7196881f38ce
+		summarizeBy: sum
+		sourceColumn: entretien_difficulte_moyenne
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_entreprise = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres_db"),
+				    marts_dim_entreprise = Source{[Schema="marts",Item="dim_entreprise"]}[Data]
+				in
+				    marts_dim_entreprise
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
