@@ -15,22 +15,22 @@ REPERTOIRE_PROJET="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 REPERTOIRE_VENV="$REPERTOIRE_PROJET/.venv"
 
-REPERTOIRE_DATALAKE="$REPERTOIRE_PROJET"         # pour le script Python, le datalake est le répertoire racine du projet
+REPERTOIRE_DATALAKE="$REPERTOIRE_PROJET/2_datalake"      # zones du datalake (arborescence des consignes)
 REPERTOIRE_SOURCE_HTML="$REPERTOIRE_DATALAKE/0_SOURCE_WEB"
-REPERTOIRE_INGESTION="$REPERTOIRE_PROJET/3_ingestion"
+REPERTOIRE_INGESTION="$REPERTOIRE_PROJET/1_ingestion"
 SCRIPT_INGESTION="ingestion.py"
 SCRIPT_EXPORT_DBT="export_dbt.py"
 
-REPERTOIRE_DBT="$REPERTOIRE_PROJET/dbt_transformation"
+REPERTOIRE_DBT="$REPERTOIRE_PROJET/3_dbt_transformation"
 REPERTOIRE_SEEDS="$REPERTOIRE_DBT/seeds"
 SEEDS_ATTENDUS=("metadonnee_technique.csv" "metadonnee_descriptive.csv")
-REPERTOIRE_METADONNEES="$REPERTOIRE_DATALAKE/2_CURATED_ZONE/METADONNEES" 
+REPERTOIRE_METADONNEES="$REPERTOIRE_DATALAKE/2_CURATED_ZONE/METADONNEES"
 
 
 FICHIER_ENV="$REPERTOIRE_PROJET/.env"
 FICHIER_COMPOSE="$REPERTOIRE_PROJET/docker-compose.yml"
 
-SERVICE_POSTGRES="${SERVICE_POSTGRES:-postgres}"                
+SERVICE_POSTGRES="${SERVICE_POSTGRES:-postgres_db}"   # nom du service dans docker-compose.yml
 VARIABLES_DBT_REQUISES=("POSTGRES_USER" "POSTGRES_PASSWORD" "POSTGRES_DB")
 
 CONFIRMATION_AUTO=0
@@ -211,8 +211,8 @@ if [ "$NB_HTML" -eq 0 ]; then
     arreter "aucun fichier HTML en source : l'ingestion produirait des métadonnées vides."
 fi
 
-cd "$REPERTOIRE_DATALAKE"
-"$PYTHON_EXECUTABLE" "3_ingestion/$SCRIPT_INGESTION"
+cd "$REPERTOIRE_PROJET"
+"$PYTHON_EXECUTABLE" "$REPERTOIRE_INGESTION/$SCRIPT_INGESTION"
 
 # ============================================================
 # 8. EXPORT DES MÉTADONNÉES VERS DBT
@@ -231,7 +231,7 @@ fi
 
 case "$reponse" in
     o|O|oui|OUI)
-        "$PYTHON_EXECUTABLE" "3_ingestion/$SCRIPT_EXPORT_DBT"
+        "$PYTHON_EXECUTABLE" "$REPERTOIRE_INGESTION/$SCRIPT_EXPORT_DBT"
         for seed in "${SEEDS_ATTENDUS[@]}"; do
             verifier_seed_copie "$seed"
         done
