@@ -17,15 +17,16 @@ def charger_csv_dans_raw(chemin_csv, nom_table, schema="raw"):
     )
     with connexion, connexion.cursor() as curseur:
         curseur.execute(f'CREATE SCHEMA IF NOT EXISTS "{schema}"')
-        curseur.execute(f'DROP TABLE IF EXISTS "{schema}"."{nom_table}"')
         curseur.execute(f'''
-            CREATE TABLE "{schema}"."{nom_table}" (
+            CREATE TABLE IF NOT EXISTS "{schema}"."{nom_table}" (
                 objet_id   TEXT NOT NULL,
                 colonne    TEXT NOT NULL,
                 valeur     TEXT,
                 charge_le  TIMESTAMP DEFAULT now()
             )
         ''')
+        # TRUNCATE plutôt que DROP : les vues de staging dbt dépendent de la table
+        curseur.execute(f'TRUNCATE "{schema}"."{nom_table}"')
         copie = (f'COPY "{schema}"."{nom_table}" (objet_id, colonne, valeur) '
                  "FROM STDIN WITH (FORMAT csv, DELIMITER ';', QUOTE '\"', HEADER true)")
         with open(chemin_csv, "rb") as fichier, curseur.copy(copie) as flux:
