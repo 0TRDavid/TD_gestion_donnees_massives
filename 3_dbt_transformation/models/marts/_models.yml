@@ -1,3 +1,67 @@
-version: 2
+# Modèle décisionnel en constellation : deux tables de faits (avis, offres) partageant les dimensions dim_entreprise et dim_date.
 
-# Documentation et tests des modèles du modèle décisionnel
+version: 2
+models:
+  - name: dim_date
+    description: Calendrier couvrant les dates des avis et des offres (clé AAAAMMJJ).
+    columns:
+      - name: date_sk
+        tests: [unique, not_null]
+      - name: date_jour
+        tests: [unique, not_null]
+
+  - name: dim_entreprise
+    description: >
+      Entreprises Glassdoor (fiche complète) et entreprises vues uniquement sur LinkedIn
+      (attributs Glassdoor à NULL).
+    columns:
+      - name: entreprise_sk
+        tests: [unique, not_null]
+      - name: source_entreprise
+        tests:
+          - accepted_values:
+              values: ['GLASSDOOR', 'LINKEDIN']
+      - name: nom_entreprise
+        tests: [not_null]
+
+  - name: fct_avis
+    description: Un avis d'employé Glassdoor.
+    columns:
+      - name: avis_id
+        tests: [unique, not_null]
+      - name: entreprise_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_entreprise')
+              field: entreprise_sk
+      - name: date_avis_sk
+        tests:
+          - relationships:
+              to: ref('dim_date')
+              field: date_sk
+      - name: note_globale
+        tests: [not_null]
+
+  - name: fct_offres
+    description: Une offre d'emploi LinkedIn.
+    columns:
+      - name: id_offre_linkedin
+        tests: [unique, not_null]
+      - name: entreprise_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_entreprise')
+              field: entreprise_sk
+      - name: date_publication_sk
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_sk
+      - name: date_expiration_sk
+        tests:
+          - relationships:
+              to: ref('dim_date')
+              field: date_sk

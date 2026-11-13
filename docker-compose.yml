@@ -23,5 +23,15 @@ services:
         condition: service_healthy
     restart: "no"
 
+  dbt:
+    build: ./3_dbt_transformation
+    env_file: .env
+    environment:
+      POSTGRES_HOST: postgres_db
+    depends_on:
+      ingestion:
+        condition: service_completed_successfully
+    restart: "no"
+
 volumes:
   postgres_data:

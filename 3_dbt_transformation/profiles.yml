@@ -3,7 +3,7 @@ dbt_transformation:
   outputs:
     dev:
       type: postgres
-      host: localhost
+      host: "{{ env_var('POSTGRES_HOST', 'localhost') }}"
       user: "{{ env_var('POSTGRES_USER') }}"
       password: "{{ env_var('POSTGRES_PASSWORD') }}"
       port: 5432
