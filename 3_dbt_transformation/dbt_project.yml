@@ -1,7 +1,4 @@
 
-# Name your project! Project names should contain only lowercase characters
-# and underscores. A good package name should reflect your organization's
-# name or the intended use of these models
 name: 'dbt_transformation'
 version: '1.0.0'
 
@@ -36,9 +33,12 @@ seeds:
     
 models:
   dbt_transformation:
-    staging:          # nettoyage / typage des données raw (1 modèle par source)
+    staging:          
+      +schema: staging
       +materialized: view
-    intermediate:     # pivot du format vertical (OBJET_ID ; COLONNE ; VALEUR)
-      +materialized: view
-    marts:            # modèle décisionnel (étoile) = 3_PRODUCTION_ZONE
+    intermediate:     
+      +schema: intermediate
+      +materialized: table
+    marts:
+      +schema: marts
       +materialized: table

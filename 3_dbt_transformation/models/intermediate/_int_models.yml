@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: int_entreprises_glassdoor
+    description: Une ligne par entreprise Glassdoor (fiche société + statistiques des pages d'avis).
+    columns:
+      - name: id_employeur_glassdoor
+        tests: [unique, not_null]
+      - name: prefixe
+        tests: [unique, not_null]
+      - name: nom_entreprise
+        tests: [not_null]
+
+  - name: int_avis
+    description: Une ligne par avis Glassdoor, dédoublonné entre les pages.
+    columns:
+      - name: avis_id
+        tests: [unique, not_null]
+      - name: id_employeur_glassdoor
+        tests:
+          - not_null
+          - relationships:
+              to: ref('int_entreprises_glassdoor')
+              field: id_employeur_glassdoor
+      - name: note_globale
+        tests: [not_null]
+      - name: perspective_entreprise
+        tests:
+          - accepted_values:
+              values: ['Positive', 'Neutre', 'Négative']
+
+  - name: int_offres_emploi
+    description: Une ligne par offre LinkedIn, dédoublonnée.
+    columns:
+      - name: id_offre_linkedin
+        tests: [unique, not_null]
+      - name: intitule_poste
+        tests: [not_null]
+      - name: nom_entreprise
+        tests: [not_null]

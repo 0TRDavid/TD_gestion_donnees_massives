@@ -1,3 +1,31 @@
 version: 2
 
-# Sources raw : seeds chargés par lancement_pipeline.sh (métadonnées verticales)
+sources:
+  - name: raw
+    description: >
+      Métadonnées du datalake chargées telles quelles par 1_ingestion/charger_raw.py.
+      Format vertical imposé par les consignes : OBJET_ID ; COLONNE ; VALEUR.
+    schema: raw
+    tables:
+      - name: metadonnee_technique
+        description: Une ligne par (fichier HTML, métadonnée technique).
+        columns:
+          - name: objet_id
+            description: Identifiant unique du fichier HTML (hash du nom de fichier).
+            tests: [not_null]
+          - name: colonne
+            tests: [not_null]
+
+      - name: metadonnee_descriptive
+        description: >
+          Une ligne par (fichier HTML, donnée extraite). Pour les pages d'avis, la colonne
+          contient l'identifiant de l'avis : avis_<id>__<attribut>.
+        columns:
+          - name: objet_id
+            tests:
+              - not_null
+              - relationships:
+                  to: source('raw', 'metadonnee_technique')
+                  field: objet_id
+          - name: colonne
+            tests: [not_null]

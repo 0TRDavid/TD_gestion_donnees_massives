@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_fichiers
+    description: Une ligne par fichier HTML ingéré (métadonnées techniques pivotées).
+    columns:
+      - name: objet_id
+        tests: [unique, not_null]
+      - name: categorie
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['INFO_SOCIETE', 'AVIS_SOCIETE', 'OFFRE_EMPLOI']
+      - name: prefixe
+        description: Numéro en tête du nom de fichier ; relie une fiche société Glassdoor à ses pages d'avis.
+        tests: [not_null]
+      - name: site_source
+        tests:
+          - accepted_values:
+              values: ['GLASSDOOR', 'LINKEDIN']
+
+  - name: stg_metadonnee_descriptive
+    description: >
+      Métadonnées descriptives restées au format vertical, rattachées à leur fichier,
+      avec la clé des avis découpée (avis_id + attribut) et le texte nettoyé.
+    columns:
+      - name: objet_id
+        tests: [not_null]
+      - name: categorie
+        tests: [not_null]
+      - name: attribut
+        tests: [not_null]
+      - name: avis_id
+        description: Renseigné uniquement pour les données d'un avis individuel.
