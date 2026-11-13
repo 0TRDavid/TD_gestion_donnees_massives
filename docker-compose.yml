@@ -1,18 +1,27 @@
 services:
   postgres_db:
     image: postgres:16-alpine
-    env_file:
-      - .env
-    container_name: postgres_db
-    restart: always
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    ports:
-      - "5432:5432"
+    env_file: .env
+    ports: ["5432:5432"]
     volumes:
       - postgres_data:/var/lib/postgresql/data
-  
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 2s
+      retries: 30
+
+  ingestion:
+    build: ./1_ingestion
+    env_file: .env
+    environment:                  
+      DATALAKE_DIR: /data
+      POSTGRES_HOST: postgres_db   
+    volumes:
+      - ./2_datalake:/data    
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+    restart: "no"
+
 volumes:
   postgres_data:
