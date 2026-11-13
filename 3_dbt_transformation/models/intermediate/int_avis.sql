@@ -1,6 +1,6 @@
 -- ./models/intermediate/int_avis.sql
 -- Une ligne par avis Glassdoor (grain : avis_id).
--- Un fichier AVIS contient plusieurs avis, et un même avis peut apparaître sur deux pages
+-- Un fichier AVIS contient plusieurs avis, un même avis peut apparaître sur deux pages (P1, P2)
 
 with descriptif as (
     select *

@@ -1,4 +1,4 @@
--- ./models/intermediate/int_entreprise_glassdoor.sql
+-- ./models/intermediate/int_entreprises_glassdoor.sql
 -- Une ligne par entreprise Glassdoor (grain : id_employeur_glassdoor).
 
 with descriptif as (

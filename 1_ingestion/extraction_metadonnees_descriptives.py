@@ -6,9 +6,8 @@ from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
-SEPARATEUR_DECIMAL = ","      # convention reprise de la version initiale (notes avec virgule)
-SEPARATEUR_MULTI = " | "      # séparateur pour les champs multivalués (ex. fonctions LinkedIn)
-
+SEPARATEUR_DECIMAL = ","      
+SEPARATEUR_MULTI = " | "      
 
 # ----------------------------------------------------------------------------
 # Helpers génériques

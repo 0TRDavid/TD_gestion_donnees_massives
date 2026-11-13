@@ -1,4 +1,4 @@
--- ./models/staging/stg_fichiers
+-- ./models/staging/stg_fichiers.sql
 
 with pivote as (
     select

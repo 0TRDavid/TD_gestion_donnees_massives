@@ -1,4 +1,4 @@
--- models/staging/stg_metadonne_descriptive.sql
+-- ./models/staging/stg_metadonnee_descriptive.sql
 
 with fichiers as (
     select objet_id, categorie, prefixe
@@ -10,7 +10,7 @@ nettoye as (
         objet_id,
         substring(colonne from '^avis_([0-9]+)__')::bigint as avis_id,
         regexp_replace(colonne, '^avis_[0-9]+__', '') as attribut,
-        -- traitement des balises HTML restées dans le texte extrait
+        -- décodage des entités HTML (&amp; etc.)
         nullif(trim(
             replace(replace(replace(replace(replace(replace(valeur,
                 '&amp;', '&'), '&quot;', '"'), '&#39;', ''''), '&#x27;', ''''),

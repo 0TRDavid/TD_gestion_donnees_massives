@@ -15,7 +15,7 @@ import hashlib # pour créer un identifiant unique basé sur le nom du fichier H
 from extraction_metadonnees_descriptives import extraire_metadonnees_descriptives
 
 # ============================================================
-# 1. PARAMÈTRES : tous les chemins sont centralisés dans config.py
+# 1. PARAMÈTRES
 # ============================================================
 
 from config import (
@@ -123,7 +123,7 @@ def creer_metadonnees_techniques(
     chemin_fichier_cible,
     categorie_metier
 ):
-    # Chemins relatifs (ex. DATALAKE\0_SOURCE_WEB\...) : indépendants de l'emplacement du dépôt et de l'OS
+    # Normalisation des chemins
     base = os.path.dirname(REPERTOIRE_DATALAKE)
     chemin_fichier_source = os.path.relpath(chemin_fichier_source, base)
     chemin_fichier_cible = os.path.relpath(chemin_fichier_cible, base)

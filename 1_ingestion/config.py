@@ -1,19 +1,12 @@
 # -*- coding: utf-8 -*-
-"""
-Chemins du projet, définis à un seul endroit.
-
-Tous les chemins sont calculés à partir de l'emplacement de ce fichier :
-les scripts fonctionnent quel que soit le répertoire courant.
-Surcharge possible du datalake via la variable d'environnement DATALAKE_DIR.
-"""
+"""Chemins du projet."""
 
 import os
 
-# Racine du dépôt (le dossier qui contient 1_ingestion/, 2_datalake/, 3_dbt_transformation/)
 REPERTOIRE_PROJET = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # ------------------------------------------------------------
-# Zones du datalake (arborescence imposée par les consignes)
+# Zones du datalake 
 # ------------------------------------------------------------
 REPERTOIRE_DATALAKE = os.environ.get("DATALAKE_DIR") or os.path.join(REPERTOIRE_PROJET, "2_datalake")
 

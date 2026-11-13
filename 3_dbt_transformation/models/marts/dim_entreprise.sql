@@ -1,4 +1,4 @@
--- models/marts/dim_entreprise.sql
+-- ./models/marts/dim_entreprise.sql
 
 with glassdoor as (
     select * from {{ ref('int_entreprises_glassdoor') }}
