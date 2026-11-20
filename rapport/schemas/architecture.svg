@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+  </defs>
+  <rect width="920" height="560" fill="#ffffff"/>
+
+  <!-- Docker compose frame -->
+  <rect x="10" y="10" width="900" height="540" rx="12" fill="none" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="26" y="32" fill="#0369a1" font-weight="bold">docker compose up -d --build</text>
+
+  <!-- Datalake zones -->
+  <rect x="30" y="50" width="420" height="300" rx="10" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="44" y="72" font-weight="bold" fill="#1e293b">Data Lake (système de fichiers : 2_datalake/)</text>
+
+  <rect x="50" y="88" width="170" height="70" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+  <text x="135" y="112" text-anchor="middle" font-weight="bold">0_SOURCE_WEB</text>
+  <text x="135" y="130" text-anchor="middle" font-size="12">603 pages HTML</text>
+  <text x="135" y="146" text-anchor="middle" font-size="11" fill="#475569">jamais modifiées</text>
+
+  <rect x="260" y="88" width="170" height="100" rx="8" fill="#dbeafe" stroke="#3b82f6"/>
+  <text x="345" y="112" text-anchor="middle" font-weight="bold">1_LANDING_ZONE</text>
+  <text x="345" y="132" text-anchor="middle" font-size="12">GLASSDOOR/AVIS (209)</text>
+  <text x="345" y="150" text-anchor="middle" font-size="12">GLASSDOOR/SOC (140)</text>
+  <text x="345" y="168" text-anchor="middle" font-size="12">LINKEDIN/EMP (254)</text>
+
+  <rect x="150" y="235" width="280" height="95" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="290" y="258" text-anchor="middle" font-weight="bold">2_CURATED_ZONE / METADONNEES</text>
+  <text x="290" y="278" text-anchor="middle" font-size="12">metadonnees_techniques.csv</text>
+  <text x="290" y="295" text-anchor="middle" font-size="12">metadonnees_descriptives.csv</text>
+  <text x="290" y="315" text-anchor="middle" font-size="11" fill="#475569">format vertical OBJET_ID ; COLONNE ; VALEUR</text>
+
+  <line x1="220" y1="123" x2="256" y2="123" stroke="#475569" stroke-width="1.6" marker-end="url(#f)"/>
+  <text x="238" y="200" text-anchor="middle" font-size="11" fill="#475569"></text>
+  <line x1="345" y1="188" x2="345" y2="231" stroke="#475569" stroke-width="1.6" marker-end="url(#f)"/>
+  <text x="352" y="214" font-size="11" fill="#475569">parsing HTML</text>
+
+  <!-- Python container -->
+  <rect x="470" y="50" width="200" height="120" rx="10" fill="#fef3c7" stroke="#d97706"/>
+  <text x="570" y="72" text-anchor="middle" font-weight="bold">conteneur ingestion</text>
+  <text x="570" y="90" text-anchor="middle" font-size="11" fill="#78350f">Python 3.13</text>
+  <text x="570" y="112" text-anchor="middle" font-size="12">ingestion.py</text>
+  <text x="570" y="130" text-anchor="middle" font-size="12">extraction_metadonnees…py</text>
+  <text x="570" y="148" text-anchor="middle" font-size="12">charger_raw.py (COPY)</text>
+  <line x1="470" y1="110" x2="434" y2="110" stroke="#d97706" stroke-width="1.4" stroke-dasharray="4 3"/>
+
+  <!-- Postgres -->
+  <rect x="30" y="380" width="640" height="150" rx="10" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="44" y="402" font-weight="bold" fill="#4c1d95">PostgreSQL 16 (conteneur postgres_db, port 5432)</text>
+  <g font-size="12">
+    <rect x="50" y="420" width="130" height="90" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+    <text x="115" y="442" text-anchor="middle" font-weight="bold">raw</text>
+    <text x="115" y="462" text-anchor="middle">2 tables</text>
+    <text x="115" y="480" text-anchor="middle" font-size="11">données brutes</text>
+    <text x="115" y="496" text-anchor="middle" font-size="11">verticales</text>
+
+    <rect x="205" y="420" width="130" height="90" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+    <text x="270" y="442" text-anchor="middle" font-weight="bold">staging</text>
+    <text x="270" y="462" text-anchor="middle">2 vues</text>
+    <text x="270" y="480" text-anchor="middle" font-size="11">nettoyage,</text>
+    <text x="270" y="496" text-anchor="middle" font-size="11">rattachement</text>
+
+    <rect x="360" y="420" width="130" height="90" rx="8" fill="#ffffff" stroke="#7c3aed"/>
+    <text x="425" y="442" text-anchor="middle" font-weight="bold">intermediate</text>
+    <text x="425" y="462" text-anchor="middle">3 tables</text>
+    <text x="425" y="480" text-anchor="middle" font-size="11">pivot, typage,</text>
+    <text x="425" y="496" text-anchor="middle" font-size="11">dédoublonnage</text>
+
+    <rect x="515" y="420" width="135" height="90" rx="8" fill="#fde68a" stroke="#b45309"/>
+    <text x="582" y="442" text-anchor="middle" font-weight="bold">marts</text>
+    <text x="582" y="462" text-anchor="middle">5 tables</text>
+    <text x="582" y="480" text-anchor="middle" font-size="11">modèle décisionnel</text>
+    <text x="582" y="496" text-anchor="middle" font-size="11">= 3_PRODUCTION_ZONE</text>
+  </g>
+  <line x1="180" y1="465" x2="201" y2="465" stroke="#475569" stroke-width="1.6" marker-end="url(#f)"/>
+  <line x1="335" y1="465" x2="356" y2="465" stroke="#475569" stroke-width="1.6" marker-end="url(#f)"/>
+  <line x1="490" y1="465" x2="511" y2="465" stroke="#475569" stroke-width="1.6" marker-end="url(#f)"/>
+
+  <!-- curated -> raw -->
+  <path d="M290,330 L290,360 L115,360 L115,416" fill="none" stroke="#475569" stroke-width="1.6" marker-end="url(#f)"/>
+  <text x="125" y="354" font-size="11" fill="#475569">COPY (TRUNCATE + rechargement)</text>
+
+  <!-- dbt container -->
+  <rect x="470" y="200" width="200" height="150" rx="10" fill="#ffedd5" stroke="#ea580c"/>
+  <text x="570" y="222" text-anchor="middle" font-weight="bold">conteneur dbt</text>
+  <text x="570" y="240" text-anchor="middle" font-size="11" fill="#7c2d12">dbt-core 1.9 + dbt-postgres</text>
+  <text x="570" y="264" text-anchor="middle" font-size="12">dbt build</text>
+  <text x="570" y="282" text-anchor="middle" font-size="11">10 modèles + 50 tests</text>
+  <text x="570" y="304" text-anchor="middle" font-size="12">dbt docs serve</text>
+  <text x="570" y="322" text-anchor="middle" font-size="11">localhost:8080</text>
+  <line x1="570" y1="350" x2="570" y2="400" stroke="#ea580c" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#f)"/>
+  <text x="578" y="376" font-size="11" fill="#7c2d12">SQL exécuté dans la base</text>
+
+  <!-- Power BI -->
+  <rect x="710" y="380" width="180" height="150" rx="10" fill="#fef9c3" stroke="#ca8a04"/>
+  <text x="800" y="404" text-anchor="middle" font-weight="bold">Power BI Desktop</text>
+  <text x="800" y="424" text-anchor="middle" font-size="11" fill="#713f12">projet .pbip (versionné)</text>
+  <text x="800" y="452" text-anchor="middle" font-size="12">4 pages de rapport</text>
+  <text x="800" y="472" text-anchor="middle" font-size="12">24 mesures DAX</text>
+  <text x="800" y="500" text-anchor="middle" font-size="11">connexion au schéma marts</text>
+  <line x1="650" y1="465" x2="706" y2="465" stroke="#475569" stroke-width="1.6" marker-end="url(#f)"/>
+
+  <!-- Ordering -->
+  <rect x="710" y="50" width="180" height="300" rx="10" fill="#f0f9ff" stroke="#0ea5e9"/>
+  <text x="800" y="72" text-anchor="middle" font-weight="bold" fill="#0369a1">Ordre garanti</text>
+  <g font-size="12" text-anchor="middle">
+    <text x="800" y="102">1. postgres_db</text>
+    <text x="800" y="120" font-size="11" fill="#475569">healthcheck pg_isready</text>
+    <text x="800" y="146">↓ service_healthy</text>
+    <text x="800" y="176">2. ingestion</text>
+    <text x="800" y="194" font-size="11" fill="#475569">s'arrête une fois fini</text>
+    <text x="800" y="220">↓ service_completed_</text>
+    <text x="800" y="236">successfully</text>
+    <text x="800" y="266">3. dbt</text>
+    <text x="800" y="284" font-size="11" fill="#475569">build, puis sert la doc</text>
+    <text x="800" y="320" font-size="11" fill="#475569">un échec bloque la suite</text>
+  </g>
+</svg>

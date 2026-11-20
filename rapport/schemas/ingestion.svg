@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 250" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+  <defs>
+    <marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+  </defs>
+  <rect width="920" height="250" fill="#ffffff"/>
+  <g text-anchor="middle">
+    <rect x="10" y="40" width="140" height="70" rx="8" fill="#e2e8f0" stroke="#64748b"/>
+    <text x="80" y="66" font-weight="bold">Lister</text>
+    <text x="80" y="84" font-size="11">fichiers .html de</text>
+    <text x="80" y="98" font-size="11">0_SOURCE_WEB</text>
+
+    <rect x="180" y="40" width="150" height="70" rx="8" fill="#e0f2fe" stroke="#0284c7"/>
+    <text x="255" y="66" font-weight="bold">Analyser le nom</text>
+    <text x="255" y="84" font-size="11">site, type, catégorie</text>
+    <text x="255" y="98" font-size="11">OBJET_ID = md5(nom)</text>
+
+    <polygon points="425,40 485,75 425,110 365,75" fill="#fef3c7" stroke="#d97706"/>
+    <text x="425" y="72" font-weight="bold" font-size="11">déjà copié et</text>
+    <text x="425" y="86" font-weight="bold" font-size="11">à jour ?</text>
+
+    <rect x="520" y="40" width="150" height="70" rx="8" fill="#dbeafe" stroke="#3b82f6"/>
+    <text x="595" y="66" font-weight="bold">Copier</text>
+    <text x="595" y="84" font-size="11">shutil.copy2 → LANDING/</text>
+    <text x="595" y="98" font-size="11">SITE/CATEGORIE</text>
+
+    <rect x="700" y="20" width="210" height="50" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="805" y="42" font-weight="bold">Métadonnées techniques</text>
+    <text x="805" y="58" font-size="11">7 lignes par fichier</text>
+
+    <rect x="700" y="85" width="210" height="50" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="805" y="107" font-weight="bold">Métadonnées descriptives</text>
+    <text x="805" y="123" font-size="11">extraction depuis la landing zone</text>
+
+    <rect x="560" y="170" width="350" height="56" rx="8" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="735" y="192" font-weight="bold">Écriture des 2 CSV verticaux + historique</text>
+    <text x="735" y="210" font-size="11">date, nb sources / copiés / ignorés, tailles des fichiers</text>
+
+    <rect x="180" y="160" width="150" height="50" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="255" y="182" font-weight="bold" font-size="11">nom non conforme</text>
+    <text x="255" y="198" font-size="11">ignoré et signalé</text>
+  </g>
+  <g stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#f)">
+    <path d="M150,75 L176,75"/>
+    <path d="M330,75 L361,75"/>
+    <path d="M485,75 L516,75"/>
+    <path d="M670,75 L685,75 L685,45 L696,45"/>
+    <path d="M670,75 L685,75 L685,110 L696,110"/>
+    <path d="M255,110 L255,156"/>
+    <path d="M425,110 L425,150 L685,150 L685,60" stroke-dasharray="4 3"/>
+    <path d="M805,135 L805,166"/>
+  </g>
+  <g font-size="11" fill="#475569">
+    <text x="490" y="68">non</text>
+    <text x="432" y="130">oui : copie ignorée,</text>
+    <text x="432" y="144">métadonnées produites</text>
+    <text x="262" y="138">non conforme</text>
+  </g>
+</svg>

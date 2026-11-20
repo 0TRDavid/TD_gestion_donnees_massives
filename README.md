@@ -97,7 +97,7 @@ Les tables sont vidées (`TRUNCATE`) puis rechargées à chaque exécution plut�
 
 Plutôt qu'un ETL en Python produisant des CSV, la phase 3 est réalisée en SQL avec dbt, directement dans PostgreSQL :
 
-- **les transformations sont testées** : 59 tests (unicité, valeurs non nulles, relations entre tables, valeurs autorisées) sont exécutés à chaque lancement et bloquent le pipeline en cas d'anomalie ;
+- **les transformations sont testées** : 50 tests (unicité, valeurs non nulles, relations entre tables, valeurs autorisées) sont exécutés à chaque lancement et bloquent le pipeline en cas d'anomalie ;
 - **tout est rejouable en une commande** : `docker compose up` reconstruit l'entrepôt complet depuis les HTML, sans étape manuelle.
 
 Le projet suit trois couches :
@@ -118,7 +118,7 @@ Modèle en constellation : deux tables de faits partagent les mêmes dimensions.
             dim_date
             ▲      ▲
             │      │
-     fct_avis      fct_offres
+     fct_avis      fct_offres ──► dim_poste
             │      │
             ▼      ▼
          dim_entreprise
@@ -127,8 +127,9 @@ Modèle en constellation : deux tables de faits partagent les mêmes dimensions.
 | Table | Grain | Contenu |
 |---|---|---|
 | `fct_avis` | un avis Glassdoor | 6 notes sur 5, recommandation, approbation du PDG, statut de l'auteur, titre, avantages, inconvénients |
-| `fct_offres` | une offre LinkedIn | nombre d'offres, durée de publication, intitulé, niveau, type de contrat, localisation |
+| `fct_offres` | une offre LinkedIn | nombre d'offres, durée de publication, localisation, description |
 | `dim_entreprise` | une entreprise | fiche Glassdoor (secteur, taille, notes globales…) ou entreprise vue uniquement sur LinkedIn |
+| `dim_poste` | un profil de poste | intitulé, niveau hiérarchique, type d'emploi, fonction, secteurs |
 | `dim_date` | un jour | clé `AAAAMMJJ` |
 
 - Une offre LinkedIn est rattachée à une fiche Glassdoor par le nom de l'entreprise normalisé (minuscules, sans ponctuation). Les entreprises sans fiche Glassdoor sont ajoutées à `dim_entreprise` avec des attributs Glassdoor vides, pour ne perdre aucune offre.
@@ -164,4 +165,4 @@ Problèmes rencontrés dans les sources et traités dans le pipeline :
 |---|---|---|
 | Ingestion | phases 1 et 2 : copie en landing zone, métadonnées techniques, extraction des métadonnées descriptives | _Nico_ |
 | Transformation et modélisation | phase 3 : chargement raw, projet dbt, modèle décisionnel, conteneurisation | _David_ |
-| Data Visualisation & Documentation | phase 4: création des vues, rédaction des livrables | _Route_ |
+| Data Visualisation & Documentation | phase 4 : création des vues, rédaction des livrables | _Ruth_ |

@@ -1,0 +1,81 @@
+==============================================================================================================
+** DESCRIPTION DU TRAVAIL A REALISER (dans le cadre exceptionnel d'un travail en autonomie hors présentiel) **
+==============================================================================================================
+
+Phase 0 : Recherche des sources de données
+Doc 0 : Donnée fioournie pour le TD sous forme de fichier html récuperer du web site LINKEDIN (Info offre emploi) et GLASSDOR (Info societe + Avis sur la societe) Réalisation d’une structure de Méta-données type dans un Datalake
+
+==============================
+Phase 1 : Ingestion des objet source dans le Datalake
+
+Phase 2 (A)
+Doc 2A : Récupération des objets sources vers la Landing Zone (Reopie des fichier html source vers un emplacement de destinationsur disque)
+ (Voir Doc 1) 
+
+- Lister les fichiers d'un repertoire
+- Selectionner un type de fichier 
+- copier de source à cible
+- traiter le cas d'erreur de copie
+- si ok, mettre à jour le fichier de metadonnée technique
+
+---------------------------------
+
+Phase 2 (B/C) Extraction des infos concernant les métadonnées techniques et enregistrement dans un fichier sppécifique
+
+Doc 2B : Extraction des infos concernant les métadonnées techniques 
+- Date de recup
+- PAth source
+- nomobjet source 
+- path cible
+- nom objet cible
+- [categorie d'info]
+- type d'objet
+- …
+
+RQ : Lien vers Doc code Dublin  (Annexe 2)
+
+
+Doc 2C : 
+ - Enregistrement dans un fichier spécifique de metadonnee technique
+
+RQ: faire une iteeration pour traiter successivement chaque fichier html source
+    Question : quelle serait une solution pour mettre ce traitement en historisant journalièrement les donnee source et ne rtraiter chaque jours que les nouevelle donnnee source recuperer ?
+
+
+================================
+
+Phase 3: Extraction et Ingestion Données Descriptive dans le Datalake
+
+Doc 3 : 
+- Se servir du (lire) fichier dde metadonnes technique pour gtraiter chaque fichier àd'où extraire les metadonne descriptive
+  Annexe : Parcouri rle fichier metadonne techenique pour recuperer le nom + emplacelemnt des objets cible (fichier htrmlen landing zone)
+
+- Extraire de chaque fichier html lesdonne descriptive  souhaité.
+  Rq : utiliser en exmple les fonctions de parsing html fournie  en python en annexe pour quelque donne descriptuves pour lesavi,emploi et info societe
+       Commencer par un prototype avec 1 donne de chaque.
+
+- Definir les groupe d'etudiant pour le projet
+- Chaque groupe travaille sur une maquette de dataviz simple et en ressort une base de info descriptives necessaire à leur dataviz desire.
+
+- un fois fait, revenir sur les fonction d'extraction des metadonnee descriptive pour utiliser  et rajouter au moins 2 nouvelle fonction pour extraitre 2 nouvealle donne descriptive desficheir html.
+
+================================
+
+Phase 4: Partie BI classique : Extraction et Ingestion Données Descriptive dans le Datalake
+
+RQ: La phase 4 fera appel à vos connaisance et choix provenant de vos autre cours BI composant le cursus de votre diplôme M2 BI&A actuel.
+
+Doc 4 (A) : Analyse et realisation d'un modele de données décisionnel (Etoile, Flocon, ...) 
+  - Definir l'ensemble des données  (Dimention et indicateurs) dont vous aurez besoin pour vos rapport Datviz 
+    => Faire un dictionnaire des données.
+  - Analyser et définir une structure entité/lien par un diagramme du modèle decisionnel
+
+Doc 4 (B) : Choix des outils et implémentation des 3 parties BI à mettre en place (Architecture des données en modele decisionnel + ETL + Dataviz)
+  - Par defaut dans cette phase, vous pouvez choisir de tout faire : 
+       - fichier CSV pour le stockage des données en Datawarehouse 
+       - programme Python pour réaliser la partie ETL d'alimentation des sdonnée du datawarehouse à partir des meta-données descriptives du Datalake (programme ETL) 
+       - bibliothèque python spéclialisé pour la partie reporting (ex.: shiny)
+
+   - IMPORTANT: Le choix de ces outils ETL, environnement de stockage et reporting reste entièrement libre. 
+             Vous pouvez étudier et utiliser les outils de votre choix. 
+ 

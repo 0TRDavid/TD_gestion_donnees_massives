@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" font-family="Segoe UI, Arial, sans-serif" font-size="12">
+  <rect width="920" height="600" fill="#ffffff"/>
+  <defs>
+    <style>
+      .t{font-weight:bold;fill:#fff;font-size:13px}
+      .pk{font-weight:bold}
+      .fk{fill:#1d4ed8}
+      .m{fill:#b45309}
+      .c{fill:#334155}
+    </style>
+  </defs>
+
+  <!-- dim_entreprise (center bottom) -->
+  <g transform="translate(330,330)">
+    <rect width="260" height="250" rx="6" fill="#f0fdf4" stroke="#16a34a"/>
+    <rect width="260" height="26" rx="6" fill="#16a34a"/>
+    <text x="10" y="18" class="t">dim_entreprise (270)</text>
+    <text x="10" y="46" class="pk">🔑 entreprise_sk</text>
+    <text x="10" y="64" class="c">source_entreprise, a_fiche_glassdoor</text>
+    <text x="10" y="82" class="c">id_employeur_glassdoor</text>
+    <text x="10" y="100" class="c">nom_entreprise, nom_normalise</text>
+    <text x="10" y="118" class="c">secteur_activite, secteur/industrie</text>
+    <text x="10" y="136" class="c">type, taille, chiffre_affaires_tranche</text>
+    <text x="10" y="154" class="c">siege_social, site_web, nom_pdg</text>
+    <text x="10" y="172" class="c">annee_creation</text>
+    <text x="10" y="190" class="c">note_globale + 5 notes thématiques</text>
+    <text x="10" y="208" class="c">taux_recommandation, taux_approbation_pdg</text>
+    <text x="10" y="226" class="c">nb_avis_total, nb_salaires, nb_entretiens</text>
+    <text x="10" y="244" class="c" font-size="11">131 Glassdoor + 139 LinkedIn seules</text>
+  </g>
+
+  <!-- fct_avis (left) -->
+  <g transform="translate(20,60)">
+    <rect width="270" height="250" rx="6" fill="#eff6ff" stroke="#2563eb"/>
+    <rect width="270" height="26" rx="6" fill="#2563eb"/>
+    <text x="10" y="18" class="t">fct_avis (1 433) — grain : 1 avis</text>
+    <text x="10" y="46" class="pk">🔑 avis_id</text>
+    <text x="10" y="64" class="fk">→ entreprise_sk</text>
+    <text x="10" y="82" class="fk">→ date_avis_sk</text>
+    <text x="10" y="104" class="m">nb_avis (= 1)</text>
+    <text x="10" y="122" class="m">note_globale</text>
+    <text x="10" y="140" class="m">5 notes : culture, équilibre, direction,</text>
+    <text x="10" y="156" class="m">   carrière, rémunération (sur 5)</text>
+    <text x="10" y="174" class="m">recommande_employeur, approuve_pdg</text>
+    <text x="10" y="196" class="c">statut_auteur, est_employe_actuel</text>
+    <text x="10" y="214" class="c">poste_auteur, ville_auteur</text>
+    <text x="10" y="232" class="c">titre, avantages, inconvenients…</text>
+  </g>
+
+  <!-- fct_offres (right) -->
+  <g transform="translate(630,60)">
+    <rect width="270" height="250" rx="6" fill="#fff7ed" stroke="#ea580c"/>
+    <rect width="270" height="26" rx="6" fill="#ea580c"/>
+    <text x="10" y="18" class="t">fct_offres (242) — grain : 1 offre</text>
+    <text x="10" y="46" class="pk">🔑 id_offre_linkedin</text>
+    <text x="10" y="64" class="fk">→ entreprise_sk</text>
+    <text x="10" y="82" class="fk">→ poste_sk</text>
+    <text x="10" y="100" class="fk">→ date_publication_sk</text>
+    <text x="10" y="118" class="fk">→ date_expiration_sk</text>
+    <text x="10" y="140" class="m">nb_offres (= 1)</text>
+    <text x="10" y="158" class="m">duree_publication_jours</text>
+    <text x="10" y="180" class="c">localisation, ville, code_postal,</text>
+    <text x="10" y="198" class="c">departement, pays</text>
+    <text x="10" y="216" class="c">url_offre, description_offre</text>
+  </g>
+
+  <!-- dim_date (top center) -->
+  <g transform="translate(360,40)">
+    <rect width="200" height="80" rx="6" fill="#faf5ff" stroke="#7c3aed"/>
+    <rect width="200" height="26" rx="6" fill="#7c3aed"/>
+    <text x="10" y="18" class="t">dim_date (4 748)</text>
+    <text x="10" y="46" class="pk">🔑 date_sk (AAAAMMJJ)</text>
+    <text x="10" y="66" class="c">date_jour (2009 → 2021)</text>
+  </g>
+
+  <!-- dim_poste (right bottom) -->
+  <g transform="translate(660,400)">
+    <rect width="240" height="130" rx="6" fill="#fefce8" stroke="#ca8a04"/>
+    <rect width="240" height="26" rx="6" fill="#ca8a04"/>
+    <text x="10" y="18" class="t">dim_poste (239)</text>
+    <text x="10" y="46" class="pk">🔑 poste_sk</text>
+    <text x="10" y="64" class="c">intitule_poste</text>
+    <text x="10" y="82" class="c">niveau_hierarchique, type_emploi</text>
+    <text x="10" y="100" class="c">fonction, secteurs</text>
+  </g>
+
+  <!-- relations -->
+  <g stroke="#475569" stroke-width="1.6" fill="none">
+    <path d="M290,180 L320,180 L320,420 L330,420"/>
+    <path d="M630,180 L610,180 L610,420 L590,420"/>
+    <path d="M290,120 L340,120 L340,80 L360,80"/>
+    <path d="M630,140 L580,140 L580,80 L560,80"/>
+    <path d="M780,310 L780,400"/>
+  </g>
+  <g font-size="11" fill="#475569">
+    <text x="296" y="174">N</text><text x="320" y="414">1</text>
+    <text x="616" y="174">N</text><text x="596" y="414">1</text>
+    <text x="296" y="114">N</text><text x="350" y="74">1</text>
+    <text x="616" y="134">N</text><text x="566" y="74">1</text>
+    <text x="786" y="326">N</text><text x="786" y="394">1</text>
+  </g>
+  <g font-size="11" fill="#475569">
+    <text x="460" y="150" text-anchor="middle">fct_offres → dim_date :</text>
+    <text x="460" y="165" text-anchor="middle">2 rôles (publication, expiration)</text>
+    <text x="460" y="200" text-anchor="middle" font-weight="bold" font-size="12">Constellation :</text>
+    <text x="460" y="216" text-anchor="middle">2 tables de faits partagent</text>
+    <text x="460" y="231" text-anchor="middle">dim_entreprise et dim_date</text>
+  </g>
+
+  <!-- legend -->
+  <g transform="translate(20,350)" font-size="12">
+    <rect width="280" height="110" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="12" y="22" font-weight="bold">Légende</text>
+    <text x="12" y="44" class="pk">🔑 clé (unique, non nulle)</text>
+    <text x="12" y="62" class="fk">→ clé étrangère (test relationships)</text>
+    <text x="12" y="80" class="m">mesure agrégeable</text>
+    <text x="12" y="98" class="c">attribut descriptif</text>
+  </g>
+  <g font-size="11" fill="#475569">
+    <text x="20" y="490">Clés de substitution (hash MD5) :</text>
+    <text x="20" y="506">md5('GLASSDOOR-' || id_employeur)</text>
+    <text x="20" y="522">md5('LINKEDIN-' || nom normalisé)</text>
+    <text x="20" y="538">poste_sk = md5 des 5 attributs du poste</text>
+    <text x="20" y="554">→ stables d'une exécution à l'autre</text>
+  </g>
+</svg>
