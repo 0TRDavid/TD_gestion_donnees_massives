@@ -1,7 +1,7 @@
 ---
 titre: "Data Lakehouse : offres d'emploi et avis d'entreprises"
 sous_titre: "TD Gestion de données massives — Projet final"
-groupe: "Groupe X"
+groupe: "Groupe 7"
 auteurs: "David TRUONG · Nicolas MENY · Ruth ABEBE NGUESSY"
 formation: "M2 BI&A"
 date: "20/11/2026"
@@ -16,6 +16,7 @@ Le pipeline entier se reconstruit **en une seule commande**, depuis les fichiers
 ```
 docker compose up -d --build
 ```
+Il faut installer au préalable Docker Desktop et WSL sur l'ordinateur: https://docs.docker.com/desktop/setup/install/windows-install/ ou via le microsft store : https://apps.microsoft.com/detail/XP8CBJ40XLBWKX?hl=fr-FR&gl=FR&ocid=pdpshare et WSL: https://apps.microsoft.com/detail/9PDXGNCFSCZV?hl=neutral&gl=FR&ocid=pdpshare 
 
 | Indicateur | Valeur |
 |---|---|
@@ -330,9 +331,23 @@ Le sujet pose la question d'un traitement **historisé quotidiennement**, qui ne
 |---|---|
 | Rapprochement LinkedIn ↔ Glassdoor par nom : 72 offres sur 242 seulement | rapprochement approché (distance entre noms), ou identifiant externe (SIREN) |
 | Au plus 20 avis par entreprise | collecter toutes les pages d'avis |
-| La copie n'a pas de gestion d'erreur explicite : un fichier illisible arrête l'ingestion | `try/except` par fichier, journal des erreurs, contrôle d'intégrité par hash après copie |
 | Rechargement complet à chaque exécution | traitement incrémental (section 9) |
 | `.env` versionné | acceptable pour une base locale de TD ; en production, gestionnaire de secrets |
+
+# 11. Conclusion
+
+Nous avons construit un Data Lakehouse complet à partir de 603 pages HTML brutes. Le pipeline passe par : la collecte non destructive, le landing zone rangée par site et par type, les métadonnées techniques et descriptives au format vertical, entrepôt de données, modèle décisionnel et tableaux de bord. **Une seule commande** (`docker compose up -d --build`) reconstruit l'ensemble sur n'importe quel poste.
+
+Trois choix ont structuré le projet :
+
+- **Garder le format vertical pour le stockage et pivoter pour l'analyse.** Le data lake reste ouvert à de nouvelles sources et à de nouveaux attributs sans changer de schéma. L'entrepôt fournit des tables typées, directement exploitables par Power BI.
+- **Transformer en SQL avec dbt plutôt qu'en scripts Python.** Les 50 tests automatiques ont fait remonter les défauts des sources : avis en double sur plusieurs pages, entreprises récupérées deux fois, notes factices de Glassdoor. Corrigés dans le pipeline, ces défauts ne faussent pas les indicateurs. La documentation et le lignage générés rendent chaque table traçable jusqu'à son fichier HTML d'origine.
+- **Industrialiser dès le départ.** Les conteneurs Docker, l'ordre d'exécution garanti, le versionnement Git avec une branche par fonctionnalité et le format Power BI `.pbip` ont permis à trois personnes de travailler en parallèle sur l'ingestion, la modélisation et la dataviz, sans se bloquer.
+
+Le modèle en constellation permet de croiser, pour une même entreprise, son activité de recrutement et la satisfaction de ses employés. Les quatre pages Power BI couvrent ces questions, du marché de l'emploi dans son ensemble jusqu'au détail d'une offre.
+
+Les limites sont identifiées : seules 72 offres sur 242 ont pu être rattachées à une fiche Glassdoor, et les avis sont plafonnés à 20 par entreprise. Elles tiennent surtout à la collecte, pas à l'architecture. 
+
 
 # Annexe A : livrables
 
