@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "43c78be962ab0b812138",
+  "position": {
+    "x": 346.66666666666669,
+    "y": 272.22222222222223,
+    "z": 12000,
+    "height": 346.66666666666669,
+    "width": 484.44444444444446,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Criteres_Satisfaction"
+                    }
+                  },
+                  "Property": "Critere"
+                }
+              },
+              "queryRef": "Criteres_Satisfaction.Critere",
+              "nativeQueryRef": "Critere",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Criteres_Satisfaction"
+                    }
+                  },
+                  "Property": "Note moyenne par critère"
+                }
+              },
+              "queryRef": "Criteres_Satisfaction.Note moyenne par critère",
+              "nativeQueryRef": "Note moyenne par critère"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Criteres_Satisfaction"
+                  }
+                },
+                "Property": "Note moyenne par critère"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

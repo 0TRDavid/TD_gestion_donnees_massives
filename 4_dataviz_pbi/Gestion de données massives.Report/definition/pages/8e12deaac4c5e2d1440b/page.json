@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "8e12deaac4c5e2d1440b",
+  "displayName": "Vue d'ensemble du marché de l'emploi",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "visualInteractions": [
+    {
+      "source": "a5355b63008750687e6e",
+      "target": "d379829acbe05426e801",
+      "type": "NoFilter"
+    }
+  ]
+}

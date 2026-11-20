@@ -1,0 +1,30 @@
+relationship e313a157-54db-40b2-8c3c-da27ef313b37
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Dim Date'.date_jour
+	toColumn: LocalDateTable_86f36b5c-18e0-4718-8c15-fab95ad5d56a.Date
+
+relationship AutoDetected_b6124e3b-eccd-4657-b79c-206e1d458c44
+	fromColumn: 'Fait avis'.entreprise_sk
+	toColumn: 'Dim entreprise'.entreprise_sk
+
+relationship AutoDetected_cde0ded6-2a81-42fa-8b73-1ecbadfaf08c
+	fromColumn: 'Fait offres'.entreprise_sk
+	toColumn: 'Dim entreprise'.entreprise_sk
+
+relationship AutoDetected_41641778-ab60-42fb-976e-3114d9a4b0d2
+	fromColumn: 'Fait offres'.poste_sk
+	toColumn: 'Dim poste'.poste_sk
+
+relationship d3d1e63b-bbf7-dc38-cba0-eb33d1c14aaf
+	fromColumn: 'Fait avis'.date_avis_sk
+	toColumn: 'Dim Date'.date_sk
+
+relationship 4740973c-f6ec-b486-8201-7876207b2227
+	fromColumn: 'Fait offres'.date_expiration_sk
+	toColumn: 'Dim Date'.date_sk
+
+relationship baf63bbe-b1d0-9665-32bc-4d28031a7392
+	isActive: false
+	fromColumn: 'Fait offres'.date_publication_sk
+	toColumn: 'Dim Date'.date_sk
+

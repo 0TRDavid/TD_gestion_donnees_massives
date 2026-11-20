@@ -1,0 +1,41 @@
+table 'Dim Date'
+	lineageTag: 6d17db81-7dc8-432d-8f46-81efbad0809d
+
+	column date_sk
+		dataType: int64
+		formatString: 0
+		lineageTag: 87460a59-65b4-4894-91e8-1d98b0ab4a19
+		summarizeBy: none
+		sourceColumn: date_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_jour
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e3d45552-d4ea-4802-8a35-98cdfab16780
+		summarizeBy: none
+		sourceColumn: date_jour
+
+		variation Variation
+			isDefault
+			relationship: e313a157-54db-40b2-8c3c-da27ef313b37
+			defaultHierarchy: LocalDateTable_86f36b5c-18e0-4718-8c15-fab95ad5d56a.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition 'Dim Date' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("localhost:5432", "postgres_db"),
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "dim_date"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
