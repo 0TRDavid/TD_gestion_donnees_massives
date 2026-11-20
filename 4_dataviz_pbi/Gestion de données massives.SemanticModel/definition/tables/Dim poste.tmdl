@@ -1,0 +1,79 @@
+table 'Dim poste'
+	lineageTag: e4344934-0c67-45f5-b3ee-5f5e30c7f167
+
+	column poste_sk
+		dataType: string
+		lineageTag: cfa425e8-4441-46ee-9149-f3a2f84fefde
+		summarizeBy: none
+		sourceColumn: poste_sk
+
+		annotation SummarizationSetBy = Automatic
+
+	column intitule_poste
+		dataType: string
+		lineageTag: 40efc628-dc31-441b-b290-7237c81245da
+		summarizeBy: none
+		sourceColumn: intitule_poste
+
+		annotation SummarizationSetBy = Automatic
+
+	column niveau_hierarchique
+		dataType: string
+		lineageTag: 27610471-124a-437e-95a1-76d9d870cbf5
+		summarizeBy: none
+		sourceColumn: niveau_hierarchique
+
+		annotation SummarizationSetBy = Automatic
+
+	column type_emploi
+		dataType: string
+		lineageTag: a536d0f2-e55b-4485-8750-fd55d0f746c6
+		summarizeBy: none
+		sourceColumn: type_emploi
+
+		annotation SummarizationSetBy = Automatic
+
+	column fonction
+		dataType: string
+		lineageTag: f79a2315-17e0-4e17-891c-fad66bd2a258
+		summarizeBy: none
+		sourceColumn: fonction
+
+		annotation SummarizationSetBy = Automatic
+
+	column secteurs
+		dataType: string
+		lineageTag: eba757c3-48d4-44f8-92aa-77dc2cbe24af
+		summarizeBy: none
+		sourceColumn: secteurs
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'secteur d''activité'
+		dataType: string
+		lineageTag: 28d804c6-3979-4b53-94a4-b2cbcde2c54f
+		summarizeBy: none
+		sourceColumn: secteur d'activité
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dim poste' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("localhost:5433", "postgres_db"),
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "dim_poste"]}[Data],
+				  #"Colonne dupliquée" = Table.DuplicateColumn(#"Navigation 1", "secteurs", "secteurs - Copier"),
+				  #"Diviser la colonne par délimiteur" = Table.SplitColumn(#"Colonne dupliquée", "secteurs - Copier", Splitter.SplitTextByDelimiter("#(tab)"), {"secteurs - Copier.1", "secteurs - Copier.2"}),
+				  #"Type de colonne changé" = Table.TransformColumnTypes(#"Diviser la colonne par délimiteur", {{"secteurs - Copier.1", type text}, {"secteurs - Copier.2", type text}}, "fr"),
+				  #"Colonnes supprimées" = Table.RemoveColumns(#"Type de colonne changé", {"secteurs - Copier.1", "secteurs - Copier.2"}),
+				  #"Colonne dupliquée 1" = Table.DuplicateColumn(#"Colonnes supprimées", "secteurs", "secteurs - Copier"),
+				  #"Diviser la colonne par délimiteur 1" = Table.SplitColumn(#"Colonne dupliquée 1", "secteurs - Copier", Splitter.SplitTextByEachDelimiter({"|"}, QuoteStyle.Csv), {"secteurs - Copier.1", "secteurs - Copier.2"}),
+				  #"Type de colonne changé 1" = Table.TransformColumnTypes(#"Diviser la colonne par délimiteur 1", {{"secteurs - Copier.1", type text}, {"secteurs - Copier.2", type text}}, "fr"),
+				  #"Colonnes supprimées 1" = Table.RemoveColumns(#"Type de colonne changé 1", {"secteurs - Copier.2"}),
+				  #"Colonnes renommées" = Table.RenameColumns(#"Colonnes supprimées 1", {{"secteurs - Copier.1", "secteur d'activité"}})
+				in
+				  #"Colonnes renommées"
+
+	annotation PBI_ResultType = Table
+

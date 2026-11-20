@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Gestion de données massives"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7750fcae-f8ae-4842-9242-3b1b196a5f10"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "e2a631fdd30975196618",
+  "position": {
+    "x": 356.66666666666669,
+    "y": 22.222222222222221,
+    "z": 2000,
+    "height": 104.44444444444444,
+    "width": 884.44444444444446,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Analyse des offres et des postes proposés",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "28pt",
+                      "color": "#38215c"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Analyse des offres d'emploi, des entreprises et avis Glassdoor",
+                    "textStyle": {
+                      "fontSize": "18pt",
+                      "color": "#442376"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

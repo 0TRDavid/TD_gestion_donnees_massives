@@ -1,0 +1,73 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "4888d516204463b248eb",
+  "position": {
+    "x": 1088.8888888888889,
+    "y": 44.444444444444443,
+    "z": 16000,
+    "height": 64.444444444444443,
+    "width": 228.88888888888889,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim entreprise"
+                    }
+                  },
+                  "Property": "nom_entreprise"
+                }
+              },
+              "queryRef": "Dim entreprise.nom_entreprise",
+              "nativeQueryRef": "Nom de l'entreprise",
+              "active": true,
+              "displayName": "Nom de l'entreprise"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "selfFilterEnabled": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "syncGroup": {
+      "groupName": "nom_entreprise",
+      "fieldChanges": true,
+      "filterChanges": true
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
