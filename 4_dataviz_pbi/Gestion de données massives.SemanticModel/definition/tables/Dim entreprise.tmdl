@@ -288,12 +288,14 @@ table 'Dim entreprise'
 		mode: import
 		source =
 				let
-				  Source = PostgreSQL.Database("localhost:5433", "postgres_db"),
+				  Source = PostgreSQL.Database("localhost:5432", "postgres_db"),
 				  #"Navigation 1" = Source{[Schema = "marts", Item = "dim_entreprise"]}[Data],
 				  #"Valeur remplacée" = Table.ReplaceValue(#"Navigation 1", "", "Inconnu", Replacer.ReplaceValue, {"taille_entreprise"}),
 				  #"Valeur remplacée 1" = Table.ReplaceValue(#"Valeur remplacée", null, "Inconnu", Replacer.ReplaceValue, {"taille_entreprise"})
 				in
 				  #"Valeur remplacée 1"
 
-	annotation PBI_ResultType = Table
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
 

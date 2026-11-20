@@ -10,8 +10,8 @@
       "nodes": [
         {
           "location": {
-            "x": 1177.2637295996169,
-            "y": 476.37883983249662
+            "x": 709.28049381244261,
+            "y": 373.97029459662645
           },
           "nodeIndex": "Mesures",
           "nodeLineageTag": "175883d9-f1d3-4e28-a3a2-cbcc124b9647",
@@ -19,7 +19,7 @@
             "height": 104,
             "width": 234
           },
-          "zIndex": 1
+          "zIndex": 7
         },
         {
           "location": {
@@ -71,27 +71,29 @@
         },
         {
           "location": {
-            "x": 510.68908647171645,
-            "y": 756.75767966499313
+            "x": 448.76764051514385,
+            "y": 266.14930016291743
           },
           "nodeIndex": "Dim entreprise",
+          "nodeLineageTag": "f9602522-d608-4d27-bf57-b12c5523d86f",
           "size": {
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         },
         {
           "location": {
-            "x": 1461.2637295996169,
-            "y": 428.37883983249662
+            "x": 964.70136490940922,
+            "y": 372.41137906405589
           },
           "nodeIndex": "Criteres_Satisfaction",
+          "nodeLineageTag": "a3f7cda4-711a-4305-a4d9-f0d033e7d9f6",
           "size": {
             "height": 200,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
         }
       ],
       "name": "Toutes les tables",
