@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-  "name": "9de499e05eb1876deec3",
+  "name": "2c20358372885b9ecccc",
   "position": {
-    "x": 418.88888888888886,
-    "y": 584.44444444444446,
-    "z": 9000,
-    "height": 162.22222222222223,
-    "width": 662.22222222222217,
-    "tabOrder": 9000
+    "x": 928.33333333333337,
+    "y": 578.33333333333337,
+    "z": 14001,
+    "height": 161.66666666666669,
+    "width": 403.33333333333337,
+    "tabOrder": 14001
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,12 @@
                       "Entity": "Mesures"
                     }
                   },
-                  "Property": "Note moyenne Glassdoor des entreprises"
+                  "Property": "Note équilibre liée à l'offre"
                 }
               },
-              "queryRef": "Mesures.Note moyenne Glassdoor des entreprises",
-              "nativeQueryRef": "Note moyenne Glassdoor des entreprises"
+              "queryRef": "Mesures.Note équilibre liée à l'offre",
+              "nativeQueryRef": "Note de l'équilibre vie pro/perso",
+              "displayName": "Note de l'équilibre vie pro/perso"
             }
           ]
         }
@@ -42,7 +43,7 @@
                     "Entity": "Mesures"
                   }
                 },
-                "Property": "Note moyenne Glassdoor des entreprises"
+                "Property": "Note équilibre liée à l'offre"
               }
             },
             "direction": "Descending"

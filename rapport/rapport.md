@@ -296,22 +296,81 @@ S'y ajoutent la **traçabilité** propre au data lake (métadonnées techniques 
 
 # 8. Phase 4 : restitution avec Power BI
 
-Le rapport Power BI se connecte au schéma `marts`. Le modèle sémantique reprend les relations du modèle décisionnel et ajoute **24 mesures DAX** (nombre d'offres, durée moyenne de publication, note moyenne, taux de recommandation, taux d'approbation du PDG, notes par critère…).
+Le rapport Power BI se connecte au schéma `marts`. À partir du modèle décisionnel existant, nous avons construit un modèle sémantique permettant de centraliser les indicateurs utilisés dans les différentes pages du rapport. Nous avons créé 24 mesures DAX afin de faciliter l'analyse des offres d'emploi, des entreprises et des avis Glassdoor. Ces mesures permettent notamment de suivre le volume d'offres, leur durée de publication, la diversité des postes proposés, les évaluations des entreprises ainsi que les indicateurs de satisfaction des employés.
+
+### Préparation des données pour la visualisation
+
+Avant de construire les visualisations, nous avons effectué plusieurs ajustements afin de rendre les données plus facilement exploitables et d'améliorer la lisibilité des indicateurs.
+
+- Les valeurs manquantes de taille d'entreprise ont été regroupées sous la valeur « Inconnu », afin de conserver les entreprises dans les analyses.
+- Les secteurs d'activité comportant plusieurs valeurs ont été simplifiés pour faciliter les regroupements et les visualisations.
+- Les informations de localisation ont été exploitées afin de distinguer les villes et les pays, notamment pour limiter les ambiguïtés lors de la représentation cartographique.
+
+Ces préparations permettent de proposer des visualisations plus lisibles et de faciliter l'interprétation des résultats par l'utilisateur.
+
+### Création des indicateurs DAX
+
+Nous avons organisé les indicateurs dans le modèle sémantique Power BI afin de faciliter leur réutilisation dans les différentes pages du rapport.
+
+Les mesures créées couvrent trois principaux axes d'analyse :
+
+| Axe d'analyse | Indicateurs |
+|---|---|
+| Offres d'emploi | Nombre d'offres, durée moyenne de publication, durée minimale et maximale, nombre d'entreprises recrutant, nombre de postes distincts, répartition par type d'emploi et nombre de villes |
+| Avis des employés | Nombre d'avis, note moyenne globale, taux de recommandation et taux d'approbation du PDG |
+| Entreprises | Nombre d'entreprises, note moyenne Glassdoor, nombre total d'avis et couverture des entreprises disposant d'une fiche Glassdoor |
+
+L'utilisation de mesures DAX permet de centraliser les calculs et d'assurer leur cohérence lorsqu'ils sont utilisés dans plusieurs visualisations. Les indicateurs évoluent également selon les filtres appliqués dans le rapport.
+
+
+### Contextualisation des indicateurs dans la fiche offre
+
+La page d'analyse détaillée d'une offre nécessite de tenir compte du contexte de sélection. Une offre LinkedIn est associée à une entreprise, tandis que les avis Glassdoor sont rattachés à cette entreprise et non directement à l'offre.
+
+Nous avons donc adapté certaines mesures DAX afin de garantir la cohérence des indicateurs affichés lors de la sélection d'une référence LinkedIn. La sélection de l'offre permet ainsi de récupérer l'entreprise associée, puis de calculer le nombre d'avis et les différentes notes Glassdoor à partir des avis de cette entreprise.
+
+Cette approche permet de conserver le modèle décisionnel existant tout en assurant la cohérence entre les informations relatives aux offres d'emploi et les indicateurs de satisfaction des employés.
+
+### Analyse des notes par critère
+
+Afin de comparer les différents aspects de la satisfaction des employés, nous avons créé une visualisation permettant d'analyser les notes attribuées selon cinq critères :
+
+- Culture et valeurs
+- Équilibre entre vie professionnelle et vie personnelle
+- Équipe dirigeante
+- Opportunités de carrière
+- Rémunération et avantages
+
+Pour permettre l'affichage de ces critères dans une même visualisation, nous avons créé une table dédiée `Criteres_Satisfaction`, indépendante du modèle relationnel. Une mesure DAX utilisant `SELECTEDVALUE` et `SWITCH` sélectionne ensuite la note correspondant au critère affiché.
+
+Cette méthode permet de regrouper les cinq indicateurs dans une seule visualisation et de comparer facilement les différents aspects de la satisfaction des employés, sur une échelle de 0 à 5.
 
 | Page | Question à laquelle elle répond | Visuels principaux |
 |---|---|---|
 | **Vue d'ensemble du marché de l'emploi** | combien d'offres et d'entreprises, publiées quand, où ? | indicateurs clés, évolution des publications, répartition par type d'emploi et par ville, part d'employés actuels parmi les auteurs d'avis |
 | **Offres & postes** | quels postes, à quel niveau, dans quelles entreprises, où ? | carte des offres par ville, répartition par intitulé et niveau hiérarchique, par taille et secteur d'entreprise, filtres |
-| **Analyse détaillée d'une offre** | que vaut une offre précise ? | fiche de l'offre (poste, durée de publication) et notes par critère de l'entreprise qui recrute |
 | **Entreprises & avis** | que pensent les employés de leur entreprise ? | note moyenne, taux de recommandation et d'approbation du PDG, notes par critère, évolution des avis, tableau par entreprise |
+| **Analyse détaillée d'une offre** | que vaut une offre précise ? | fiche de l'offre (poste, durée de publication) et notes par critère de l'entreprise qui recrute |
+
+
 
 ![Vue d'ensemble du marché de l'emploi](captures/pbi_vue_ensemble.png)
 
 ![Offres & postes](captures/pbi_offres_postes.png)
 
+![Entreprises & avis](captures/pbi_entreprises_avis.png)
+
 ![Analyse détaillée d'une offre](captures/pbi_detail_offre.png)
 
-![Entreprises & avis](captures/pbi_entreprises_avis.png)
+
+
+### Apport de la restitution décisionnelle
+
+La restitution Power BI permet de passer d'une vision globale du marché de l'emploi à une analyse plus détaillée des offres et des entreprises. Le croisement des données de recrutement avec les avis Glassdoor permet d'explorer les relations entre l'activité de recrutement et les indicateurs de satisfaction des employés.
+
+### Navigation et interactivité
+
+Les différentes pages du rapport permettent d'explorer les données selon plusieurs niveaux de granularité. Les filtres permettent de cibler les entreprises, les offres, les postes, les périodes ou les localisations afin d'affiner l'analyse. Cette interactivité facilite le passage d'une vision globale du marché de l'emploi à l'étude d'une offre ou d'une entreprise particulière.
 
 # 9. Historiser chaque jour et ne traiter que les nouvelles données
 

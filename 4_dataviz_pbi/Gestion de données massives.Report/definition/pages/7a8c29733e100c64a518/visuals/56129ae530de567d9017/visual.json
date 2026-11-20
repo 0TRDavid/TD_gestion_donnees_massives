@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "56129ae530de567d9017",
   "position": {
-    "x": 1162.2222222222222,
-    "y": 587.77777777777771,
+    "x": 1420,
+    "y": 578.33333333333337,
     "z": 11000,
-    "height": 162.22222222222223,
-    "width": 662.22222222222217,
-    "tabOrder": 11000
+    "height": 161.66666666666669,
+    "width": 403.33333333333337,
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,12 @@
                       "Entity": "Mesures"
                     }
                   },
-                  "Property": "Note moyenne équilibre vie pro"
+                  "Property": "Note culture liée à l'offre"
                 }
               },
-              "queryRef": "Mesures.Note moyenne équilibre vie pro",
-              "nativeQueryRef": "Note moyenne équilibre vie pro"
+              "queryRef": "Mesures.Note culture liée à l'offre",
+              "nativeQueryRef": "Note  de la culture & des valeurs",
+              "displayName": "Note  de la culture & des valeurs"
             }
           ]
         }
@@ -42,7 +43,7 @@
                     "Entity": "Mesures"
                   }
                 },
-                "Property": "Note moyenne équilibre vie pro"
+                "Property": "Note culture liée à l'offre"
               }
             },
             "direction": "Descending"

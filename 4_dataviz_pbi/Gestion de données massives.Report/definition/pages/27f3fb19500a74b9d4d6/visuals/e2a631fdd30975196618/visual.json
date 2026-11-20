@@ -4,7 +4,7 @@
   "position": {
     "x": 356.66666666666669,
     "y": 22.222222222222221,
-    "z": 2000,
+    "z": 1000,
     "height": 104.44444444444444,
     "width": 884.44444444444446,
     "tabOrder": 0
@@ -31,11 +31,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Analyse des offres d'emploi, des entreprises et avis Glassdoor",
-                    "textStyle": {
-                      "fontSize": "18pt",
-                      "color": "#442376"
-                    }
+                    "value": ""
                   }
                 ]
               }

@@ -4,10 +4,10 @@
   "position": {
     "x": 1162.2222222222222,
     "y": 186.66666666666666,
-    "z": 6000,
+    "z": 5000,
     "height": 162.22222222222223,
     "width": 662.22222222222217,
-    "tabOrder": 6000
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -17,23 +17,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim poste"
-                        }
-                      },
-                      "Property": "intitule_poste"
+                    "SourceRef": {
+                      "Entity": "Mesures"
                     }
                   },
-                  "Function": 3
+                  "Property": "Poste lié à l'offre"
                 }
               },
-              "queryRef": "Min(Dim poste.intitule_poste)",
-              "nativeQueryRef": "Poste",
-              "displayName": "Poste"
+              "queryRef": "Mesures.Poste lié à l'offre",
+              "nativeQueryRef": "Poste lié à l'offre"
             }
           ]
         }

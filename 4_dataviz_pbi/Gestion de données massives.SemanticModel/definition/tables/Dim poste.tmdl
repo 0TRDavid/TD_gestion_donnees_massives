@@ -61,7 +61,7 @@ table 'Dim poste'
 		mode: import
 		source =
 				let
-				  Source = PostgreSQL.Database("localhost:5432", "postgres_db"),
+				  Source = PostgreSQL.Database("localhost:5433", "postgres_db"),
 				  #"Navigation 1" = Source{[Schema = "marts", Item = "dim_poste"]}[Data],
 				  #"Colonne dupliquée" = Table.DuplicateColumn(#"Navigation 1", "secteurs", "secteurs - Copier"),
 				  #"Diviser la colonne par délimiteur" = Table.SplitColumn(#"Colonne dupliquée", "secteurs - Copier", Splitter.SplitTextByDelimiter("#(tab)"), {"secteurs - Copier.1", "secteurs - Copier.2"}),
@@ -75,7 +75,5 @@ table 'Dim poste'
 				in
 				  #"Colonnes renommées"
 
-	annotation PBI_ResultType = Exception
-
-	annotation PBI_NavigationStepName = Navigation
+	annotation PBI_ResultType = Table
 

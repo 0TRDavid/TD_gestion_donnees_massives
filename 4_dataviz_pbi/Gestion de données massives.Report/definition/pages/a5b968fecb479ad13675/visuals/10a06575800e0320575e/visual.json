@@ -17,17 +17,23 @@
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Mesures"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fait avis"
+                        }
+                      },
+                      "Property": "note_globale"
                     }
                   },
-                  "Property": "Note moyenne des avis"
+                  "Function": 1
                 }
               },
-              "queryRef": "Mesures.Note moyenne des avis",
-              "nativeQueryRef": "Note moyenne des avis"
+              "queryRef": "Sum(Fait avis.note_globale)",
+              "nativeQueryRef": "Note moyenne globale",
+              "displayName": "Note moyenne globale"
             }
           ]
         }
@@ -36,13 +42,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "Mesures"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Fait avis"
+                      }
+                    },
+                    "Property": "note_globale"
                   }
                 },
-                "Property": "Note moyenne des avis"
+                "Function": 1
               }
             },
             "direction": "Descending"

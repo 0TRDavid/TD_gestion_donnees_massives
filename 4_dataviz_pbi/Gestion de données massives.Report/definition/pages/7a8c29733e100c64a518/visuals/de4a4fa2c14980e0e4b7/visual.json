@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "de4a4fa2c14980e0e4b7",
   "position": {
-    "x": 418.88888888888886,
-    "y": 750,
+    "x": 928.33333333333337,
+    "y": 740,
     "z": 10000,
-    "height": 162.22222222222223,
-    "width": 662.22222222222217,
-    "tabOrder": 10000
+    "height": 161.66666666666669,
+    "width": 403.33333333333337,
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,12 @@
                       "Entity": "Mesures"
                     }
                   },
-                  "Property": "Note moyenne opportunités carrière"
+                  "Property": "Note rémunération liée à l'offre"
                 }
               },
-              "queryRef": "Mesures.Note moyenne opportunités carrière",
-              "nativeQueryRef": "Note moyenne opportunités carrière"
+              "queryRef": "Mesures.Note rémunération liée à l'offre",
+              "nativeQueryRef": "Note de la rémunération & des avantages",
+              "displayName": "Note de la rémunération & des avantages"
             }
           ]
         }
@@ -42,7 +43,7 @@
                     "Entity": "Mesures"
                   }
                 },
-                "Property": "Note moyenne opportunités carrière"
+                "Property": "Note rémunération liée à l'offre"
               }
             },
             "direction": "Descending"

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "4888d516204463b248eb",
   "position": {
-    "x": 1088.8888888888889,
-    "y": 44.444444444444443,
+    "x": 1174.2659100571154,
+    "y": 40.883532651891834,
     "z": 16000,
-    "height": 64.444444444444443,
-    "width": 228.88888888888889,
+    "height": 63.5966063473873,
+    "width": 229.40204432450417,
     "tabOrder": 16000
   },
   "visual": {
@@ -57,6 +57,44 @@
                 "Literal": {
                   "Value": "true"
                 }
+              }
+            },
+            "selfFilter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "d",
+                    "Entity": "Dim entreprise",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Contains": {
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "nom_entreprise"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'micr'"
+                          }
+                        }
+                      }
+                    },
+                    "Annotations": {
+                      "PowerBI.MParameterBehavior": 1
+                    }
+                  }
+                ]
               }
             }
           }

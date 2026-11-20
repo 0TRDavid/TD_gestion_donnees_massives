@@ -576,6 +576,16 @@ cultureInfo fr-FR
 			            "State": "Generated",
 			            "Weight": 0.99
 			          }
+			        },
+			        {
+			          "Secteur d'activité": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -745,6 +755,16 @@ cultureInfo fr-FR
 			            },
 			            "Weight": 0.582
 			          }
+			        },
+			        {
+			          "type d'entreprise": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -840,6 +860,16 @@ cultureInfo fr-FR
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Tranche CA": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -3280,6 +3310,16 @@ cultureInfo fr-FR
 			          "nombre d'offres": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Nb d'offres": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -4527,6 +4567,194 @@ cultureInfo fr-FR
 			          }
 			        }
 			      ]
+			    },
+			    "mesure.nombre_davis_liés_à_loffre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Mesures",
+			          "ConceptualProperty": "Nombre d'avis liés à l'offre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "nombre d'avis liés à l'offre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Nombre d'avis": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "mesure.poste_lié_à_loffre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Mesures",
+			          "ConceptualProperty": "Poste lié à l'offre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "poste lié à l'offre": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "mesure.note_globale_liée_à_loffre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Mesures",
+			          "ConceptualProperty": "Note globale liée à l'offre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "note globale liée à l'offre": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "mesure.note_culture_liée_à_loffre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Mesures",
+			          "ConceptualProperty": "Note culture liée à l'offre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "note culture liée à l'offre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Note  de la culture & des valeurs": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "mesure.note_équilibre_liée_à_loffre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Mesures",
+			          "ConceptualProperty": "Note équilibre liée à l'offre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "note équilibre liée à l'offre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Note de l'équilibre vie pro/perso": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "mesure.note_équipe_dirigeante_liée_à_loffre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Mesures",
+			          "ConceptualProperty": "Note équipe dirigeante liée à l'offre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "note équipe dirigeante liée à l'offre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Note de l'équipe dirigeante": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "mesure.note_carrière_liée_à_loffre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Mesures",
+			          "ConceptualProperty": "Note carrière liée à l'offre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "note carrière liée à l'offre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Note des opportunités de carrière": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "mesure.note_rémunération_liée_à_loffre": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Mesures",
+			          "ConceptualProperty": "Note rémunération liée à l'offre"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "note rémunération liée à l'offre": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Note de la rémunération & des avantages": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
@@ -5307,6 +5535,270 @@ cultureInfo fr-FR
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "dim_entreprises_have_fait_avis"
+			        }
+			      ]
+			    },
+			    "fait_avis_has_mesure_note_rémunération_liée_à_loffre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fait avis"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fait_avis": {
+			          "Target": {
+			            "Entity": "fait_avis"
+			          }
+			        },
+			        "mesure.note_rémunération_liée_à_loffre": {
+			          "Target": {
+			            "Entity": "mesure.note_rémunération_liée_à_loffre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fait_avis"
+			            },
+			            "Object": {
+			              "Role": "mesure.note_rémunération_liée_à_loffre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fait_avis_have_note_rémunération_liée_à_loffre"
+			        }
+			      ]
+			    },
+			    "fait_avis_has_mesure_note_carrière_liée_à_loffre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fait avis"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fait_avis": {
+			          "Target": {
+			            "Entity": "fait_avis"
+			          }
+			        },
+			        "mesure.note_carrière_liée_à_loffre": {
+			          "Target": {
+			            "Entity": "mesure.note_carrière_liée_à_loffre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fait_avis"
+			            },
+			            "Object": {
+			              "Role": "mesure.note_carrière_liée_à_loffre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fait_avis_have_note_carrière_liée_à_loffre"
+			        }
+			      ]
+			    },
+			    "fait_avis_has_mesure_note_équipe_dirigeante_liée_à_loffre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fait avis"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fait_avis": {
+			          "Target": {
+			            "Entity": "fait_avis"
+			          }
+			        },
+			        "mesure.note_équipe_dirigeante_liée_à_loffre": {
+			          "Target": {
+			            "Entity": "mesure.note_équipe_dirigeante_liée_à_loffre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fait_avis"
+			            },
+			            "Object": {
+			              "Role": "mesure.note_équipe_dirigeante_liée_à_loffre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fait_avis_have_note_équipe_dirigeante_liée_à_loffre"
+			        }
+			      ]
+			    },
+			    "fait_avis_has_mesure_note_équilibre_liée_à_loffre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fait avis"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fait_avis": {
+			          "Target": {
+			            "Entity": "fait_avis"
+			          }
+			        },
+			        "mesure.note_équilibre_liée_à_loffre": {
+			          "Target": {
+			            "Entity": "mesure.note_équilibre_liée_à_loffre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fait_avis"
+			            },
+			            "Object": {
+			              "Role": "mesure.note_équilibre_liée_à_loffre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fait_avis_have_note_équilibre_liée_à_loffre"
+			        }
+			      ]
+			    },
+			    "fait_avis_has_mesure_note_culture_liée_à_loffre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fait avis"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fait_avis": {
+			          "Target": {
+			            "Entity": "fait_avis"
+			          }
+			        },
+			        "mesure.note_culture_liée_à_loffre": {
+			          "Target": {
+			            "Entity": "mesure.note_culture_liée_à_loffre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fait_avis"
+			            },
+			            "Object": {
+			              "Role": "mesure.note_culture_liée_à_loffre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fait_avis_have_note_culture_liée_à_loffre"
+			        }
+			      ]
+			    },
+			    "fait_avis_has_mesure_note_globale_liée_à_loffre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fait avis"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fait_avis": {
+			          "Target": {
+			            "Entity": "fait_avis"
+			          }
+			        },
+			        "mesure.note_globale_liée_à_loffre": {
+			          "Target": {
+			            "Entity": "mesure.note_globale_liée_à_loffre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fait_avis"
+			            },
+			            "Object": {
+			              "Role": "mesure.note_globale_liée_à_loffre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fait_avis_have_note_globale_liée_à_loffre"
+			        }
+			      ]
+			    },
+			    "dim_poste_has_mesure_poste_lié_à_loffre": {
+			      "Binding": {
+			        "ConceptualEntity": "Dim poste"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "dim_poste": {
+			          "Target": {
+			            "Entity": "dim_poste"
+			          }
+			        },
+			        "mesure.poste_lié_à_loffre": {
+			          "Target": {
+			            "Entity": "mesure.poste_lié_à_loffre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "dim_poste"
+			            },
+			            "Object": {
+			              "Role": "mesure.poste_lié_à_loffre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dim_poste_have_poste_lié_à_loffre"
+			        }
+			      ]
+			    },
+			    "fait_avis_has_mesure_nombre_davis_liés_à_loffre": {
+			      "Binding": {
+			        "ConceptualEntity": "Fait avis"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fait_avis": {
+			          "Target": {
+			            "Entity": "fait_avis"
+			          }
+			        },
+			        "mesure.nombre_davis_liés_à_loffre": {
+			          "Target": {
+			            "Entity": "mesure.nombre_davis_liés_à_loffre"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fait_avis"
+			            },
+			            "Object": {
+			              "Role": "mesure.nombre_davis_liés_à_loffre"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fait_avis_have_nombre_davis_liés_à_loffre"
 			        }
 			      ]
 			    },

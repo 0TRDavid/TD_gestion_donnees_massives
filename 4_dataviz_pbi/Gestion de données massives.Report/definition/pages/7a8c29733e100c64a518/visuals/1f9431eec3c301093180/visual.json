@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "1f9431eec3c301093180",
   "position": {
-    "x": 1162.2222222222222,
-    "y": 917.77777777777771,
+    "x": 928.33333333333337,
+    "y": 911.66666666666674,
     "z": 14000,
-    "height": 162.22222222222223,
-    "width": 662.22222222222217,
-    "tabOrder": 14000
+    "height": 161.66666666666669,
+    "width": 403.33333333333337,
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "Mesures"
                     }
                   },
-                  "Property": "Nombre d'avis"
+                  "Property": "Note globale liée à l'offre"
                 }
               },
-              "queryRef": "Mesures.Nombre d'avis",
-              "nativeQueryRef": "Nombre d'avis"
+              "queryRef": "Mesures.Note globale liée à l'offre",
+              "nativeQueryRef": "Note globale liée à l'offre"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "Mesures"
                   }
                 },
-                "Property": "Nombre d'avis"
+                "Property": "Note globale liée à l'offre"
               }
             },
             "direction": "Descending"

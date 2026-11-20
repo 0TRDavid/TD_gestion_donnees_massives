@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-  "name": "9d1093bc140006a74950",
+  "name": "d6189a03269be804008e",
   "position": {
-    "x": 418.88888888888886,
-    "y": 917.77777777777771,
-    "z": 13000,
-    "height": 162.22222222222223,
-    "width": 662.22222222222217,
-    "tabOrder": 13000
+    "x": 1421.6666666666667,
+    "y": 740,
+    "z": 14004,
+    "height": 161.66666666666669,
+    "width": 403.33333333333337,
+    "tabOrder": 14004
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,12 @@
                       "Entity": "Mesures"
                     }
                   },
-                  "Property": "Note moyenne rémunération"
+                  "Property": "Note équipe dirigeante liée à l'offre"
                 }
               },
-              "queryRef": "Mesures.Note moyenne rémunération",
-              "nativeQueryRef": "Note moyenne rémunération"
+              "queryRef": "Mesures.Note équipe dirigeante liée à l'offre",
+              "nativeQueryRef": "Note de l'équipe dirigeante ",
+              "displayName": "Note de l'équipe dirigeante "
             }
           ]
         }
@@ -42,7 +43,7 @@
                     "Entity": "Mesures"
                   }
                 },
-                "Property": "Note moyenne rémunération"
+                "Property": "Note équipe dirigeante liée à l'offre"
               }
             },
             "direction": "Descending"

@@ -4,7 +4,7 @@
   "position": {
     "x": 1137.7777777777778,
     "y": 624.44444444444446,
-    "z": 13000,
+    "z": 14000,
     "height": 417.77777777777777,
     "width": 584.44444444444446,
     "tabOrder": 8000
@@ -87,21 +87,21 @@
             "zoom": {
               "expr": {
                 "Literal": {
-                  "Value": "4.19D"
+                  "Value": "11.8D"
                 }
               }
             },
             "centerLatitude": {
               "expr": {
                 "Literal": {
-                  "Value": "47.09616121402476D"
+                  "Value": "48.86391057835752D"
                 }
               }
             },
             "centerLongitude": {
               "expr": {
                 "Literal": {
-                  "Value": "3.031745135784149D"
+                  "Value": "2.277385319360178D"
                 }
               }
             }

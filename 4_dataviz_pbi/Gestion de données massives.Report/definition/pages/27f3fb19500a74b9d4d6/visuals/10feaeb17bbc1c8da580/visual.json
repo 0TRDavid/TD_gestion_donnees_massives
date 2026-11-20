@@ -4,10 +4,10 @@
   "position": {
     "x": 1590,
     "y": 31.111111111111111,
-    "z": 21000,
+    "z": 22000,
     "height": 85.555555555555557,
     "width": 318.88888888888886,
-    "tabOrder": 16000
+    "tabOrder": 17000
   },
   "visual": {
     "visualType": "slicer",
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "Dim entreprise.note_globale",
-              "nativeQueryRef": "note_globale",
-              "active": true
+              "nativeQueryRef": "Note globale",
+              "active": true,
+              "displayName": "Note globale"
             }
           ]
         }

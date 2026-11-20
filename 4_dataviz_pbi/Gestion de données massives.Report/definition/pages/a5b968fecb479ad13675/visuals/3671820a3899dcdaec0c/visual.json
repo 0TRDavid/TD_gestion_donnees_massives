@@ -34,11 +34,11 @@
                       "Hierarchy": "Hiérarchie de dates"
                     }
                   },
-                  "Level": "Mois"
+                  "Level": "Année"
                 }
               },
-              "queryRef": "Dim Date.date_jour.Variation.Hiérarchie de dates.Mois",
-              "nativeQueryRef": "date_jour Mois",
+              "queryRef": "Dim Date.date_jour.Variation.Hiérarchie de dates.Année",
+              "nativeQueryRef": "date_jour Année",
               "active": true
             }
           ]
@@ -66,7 +66,64 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "PropertyVariationSource": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Dim Date"
+                          }
+                        },
+                        "Name": "Variation",
+                        "Property": "date_jour"
+                      }
+                    },
+                    "Hierarchy": "Hiérarchie de dates"
+                  }
+                },
+                "Level": "Année"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
       }
+    },
+    "visualContainerObjects": {
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Moyenne de de la note globale par année'"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   },
@@ -200,6 +257,7 @@
             }
           ]
         },
+        "howCreated": "User",
         "objects": {
           "general": [
             {

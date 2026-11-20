@@ -11,9 +11,8 @@ table Criteres_Satisfaction
 			    "Rémunération et avantages", [Note moyenne rémunération],
 			    "Équilibre vie professionnelle", [Note moyenne équilibre vie pro]
 			)
+		formatString: 0.00
 		lineageTag: 490e6b62-2ee0-458b-bff2-f913433bb3f3
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column Critere
 		lineageTag: 17503a44-f0dc-4786-b558-418132be3326

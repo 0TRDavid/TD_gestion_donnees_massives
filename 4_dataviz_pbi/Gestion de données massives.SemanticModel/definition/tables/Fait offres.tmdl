@@ -147,7 +147,7 @@ table 'Fait offres'
 		mode: import
 		source =
 				let
-				  Source = PostgreSQL.Database("localhost:5432", "postgres_db"),
+				  Source = PostgreSQL.Database("localhost:5433", "postgres_db"),
 				  #"Navigation 1" = Source{[Schema = "marts", Item = "fct_offres"]}[Data],
 				  #"Lignes triées" = Table.Sort(#"Navigation 1", {{"ville", Order.Ascending}}),
 				  #"Colonne dupliquée" = Table.DuplicateColumn(#"Lignes triées", "localisation", "localisation - Copier"),
@@ -158,7 +158,5 @@ table 'Fait offres'
 				in
 				  #"Valeur remplacée"
 
-	annotation PBI_ResultType = Exception
-
-	annotation PBI_NavigationStepName = Navigation
+	annotation PBI_ResultType = Table
 

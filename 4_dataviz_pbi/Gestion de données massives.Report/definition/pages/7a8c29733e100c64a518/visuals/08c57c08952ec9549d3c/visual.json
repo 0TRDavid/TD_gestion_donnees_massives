@@ -4,7 +4,7 @@
   "position": {
     "x": 356,
     "y": 21.111111111111111,
-    "z": 1000,
+    "z": 0,
     "height": 98.888888888888886,
     "width": 848.88888888888891,
     "tabOrder": 0
@@ -19,22 +19,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "Vue d'ensemble du marché de l'emploi",
+                    "value": "Analyse détaillée d'une offre",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontSize": "28pt",
                       "color": "#38215c"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Analyse des offres d'emploi, des entreprises et avis Glassdoor",
-                    "textStyle": {
-                      "fontSize": "18pt",
-                      "color": "#442376"
                     }
                   }
                 ]

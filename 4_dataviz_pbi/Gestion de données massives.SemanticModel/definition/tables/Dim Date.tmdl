@@ -30,12 +30,12 @@ table 'Dim Date'
 		mode: import
 		source =
 				let
-				  Source = PostgreSQL.Database("localhost:5432", "postgres_db"),
+				  Source = PostgreSQL.Database("localhost:5433", "postgres_db"),
 				  #"Navigation 1" = Source{[Schema = "marts", Item = "dim_date"]}[Data]
 				in
 				  #"Navigation 1"
 
-	annotation PBI_ResultType = Table
+	changedProperty = Name
 
-	annotation PBI_NavigationStepName = Navigation
+	annotation PBI_ResultType = Table
 

@@ -4,10 +4,10 @@
   "position": {
     "x": 1383.3333333333333,
     "y": 77.777777777777771,
-    "z": 20000,
+    "z": 21000,
     "height": 62.222222222222221,
     "width": 150,
-    "tabOrder": 15000
+    "tabOrder": 16000
   },
   "visual": {
     "visualType": "slicer",
@@ -57,6 +57,44 @@
                 "Literal": {
                   "Value": "true"
                 }
+              }
+            },
+            "selfFilter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "d",
+                    "Entity": "Dim entreprise",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Contains": {
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "nom_entreprise"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'sof'"
+                          }
+                        }
+                      }
+                    },
+                    "Annotations": {
+                      "PowerBI.MParameterBehavior": 1
+                    }
+                  }
+                ]
               }
             }
           }

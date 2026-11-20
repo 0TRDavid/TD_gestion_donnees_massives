@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "1aa67644da01850de07d",
   "position": {
-    "x": 1038.8888888888889,
-    "y": 635.55555555555554,
+    "x": 1005,
+    "y": 635,
     "z": 15000,
     "height": 410,
-    "width": 820,
+    "width": 906.66666666666674,
     "tabOrder": 15000
   },
   "visual": {
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Dim entreprise.nom_entreprise",
-              "nativeQueryRef": "nom_entreprise"
+              "nativeQueryRef": "nom entreprise",
+              "displayName": "nom entreprise"
             },
             {
               "field": {
@@ -41,7 +42,22 @@
                 }
               },
               "queryRef": "Dim entreprise.type_entreprise",
-              "nativeQueryRef": "type_entreprise"
+              "nativeQueryRef": "type d'entreprise",
+              "displayName": "type d'entreprise"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Mesures"
+                    }
+                  },
+                  "Property": "Nombre d'avis"
+                }
+              },
+              "queryRef": "Mesures.Nombre d'avis",
+              "nativeQueryRef": "Nombre d'avis"
             },
             {
               "field": {
@@ -59,25 +75,6 @@
             },
             {
               "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Dim entreprise"
-                        }
-                      },
-                      "Property": "nb_avis_total"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(Dim entreprise.nb_avis_total)",
-              "nativeQueryRef": "Somme de nb_avis_total"
-            },
-            {
-              "field": {
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
@@ -88,7 +85,37 @@
                 }
               },
               "queryRef": "Mesures.Nombre d'offres",
-              "nativeQueryRef": "Nombre d'offres"
+              "nativeQueryRef": "Nb d'offres",
+              "displayName": "Nb d'offres"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim entreprise"
+                    }
+                  },
+                  "Property": "taille_entreprise"
+                }
+              },
+              "queryRef": "Dim entreprise.taille_entreprise",
+              "nativeQueryRef": "taille_entreprise"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim entreprise"
+                    }
+                  },
+                  "Property": "chiffre_affaires_tranche"
+                }
+              },
+              "queryRef": "Dim entreprise.chiffre_affaires_tranche",
+              "nativeQueryRef": "Tranche CA",
+              "displayName": "Tranche CA"
             },
             {
               "field": {
@@ -187,7 +214,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "135D"
+                  "Value": "101.66666666666666D"
                 }
               }
             }
@@ -201,7 +228,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "226D"
+                  "Value": "144.3333553888042D"
                 }
               }
             }
@@ -215,21 +242,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "160D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Sum(Dim entreprise.nb_avis_total)"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "113D"
+                  "Value": "56.74993923484517D"
                 }
               }
             }
@@ -243,13 +256,55 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "139.33335137435057D"
+                  "Value": "78.96255205157325D"
                 }
               }
             }
           },
           "selector": {
             "metadata": "Mesures.Note moyenne des avis"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "108.23506569003604D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim entreprise.taille_entreprise"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "168.33333333333331D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim entreprise.chiffre_affaires_tranche"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "139.6666307031686D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim entreprise.site_web"
           }
         }
       ]

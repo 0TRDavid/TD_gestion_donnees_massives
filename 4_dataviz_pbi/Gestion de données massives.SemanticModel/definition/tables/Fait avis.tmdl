@@ -191,12 +191,12 @@ table 'Fait avis'
 		mode: import
 		source =
 				let
-				  Source = PostgreSQL.Database("localhost:5432", "postgres_db"),
+				  Source = PostgreSQL.Database("localhost:5433", "postgres_db"),
 				  #"Navigation 1" = Source{[Schema = "marts", Item = "fct_avis"]}[Data]
 				in
 				  #"Navigation 1"
 
-	annotation PBI_ResultType = Exception
+	changedProperty = Name
 
-	annotation PBI_NavigationStepName = Navigation
+	annotation PBI_ResultType = Table
 

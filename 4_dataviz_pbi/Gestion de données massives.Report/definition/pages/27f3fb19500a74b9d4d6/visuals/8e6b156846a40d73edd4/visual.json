@@ -4,10 +4,10 @@
   "position": {
     "x": 1177.7777777777778,
     "y": 8.88888888888889,
-    "z": 18000,
+    "z": 19000,
     "height": 65.555555555555557,
     "width": 150,
-    "tabOrder": 13000
+    "tabOrder": 14000
   },
   "visual": {
     "visualType": "slicer",
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "Dim entreprise.secteur_activite",
-              "nativeQueryRef": "secteur_activite",
-              "active": true
+              "nativeQueryRef": "Secteur d'activité",
+              "active": true,
+              "displayName": "Secteur d'activité"
             }
           ]
         }

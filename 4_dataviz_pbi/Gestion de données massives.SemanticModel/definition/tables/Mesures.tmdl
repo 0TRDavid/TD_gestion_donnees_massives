@@ -10,9 +10,10 @@ table Mesures
 	measure 'Durée moyenne de publication' =
 			
 			AVERAGE('Fait offres'[duree_publication_jours])
+		formatString: 0
 		lineageTag: c9daf4a6-a63f-4689-ae41-49ca82ef9ad8
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+		annotation PBI_FormatHint = {"isDecimal":true}
 
 	measure 'Durée minimale de publication' =
 			
@@ -41,9 +42,8 @@ table Mesures
 	measure 'Note moyenne des avis' =
 			
 			AVERAGE('Dim entreprise'[note_globale])
+		formatString: 0.00
 		lineageTag: 6fd87da9-cae6-4140-8c10-c71a7d00a7be
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Taux de recommandation' = ```
 			
@@ -178,6 +178,131 @@ table Mesures
 			
 			SELECTEDVALUE('Fait offres'[ville])
 		lineageTag: acae5662-96f1-4f4d-8b9d-8a3c770567ff
+
+	measure 'Nombre d''avis liés à l''offre' =
+			
+			var EntrepriseSelectionnee =
+			    selectedvalue('Fait offres'[entreprise_sk])
+			return
+			    calculate(
+			        distinctcount('Fait avis'[avis_id]),
+			        filter(
+			            all('Fait avis'),
+			            'Fait avis'[entreprise_sk] = EntrepriseSelectionnee
+			        )
+			    )
+		formatString: 0
+		lineageTag: b3682947-2f9c-42a2-93ac-67d33120844a
+
+	measure 'Poste lié à l''offre' =
+			
+			var PosteSelectionne =
+			    selectedvalue('Fait offres'[poste_sk])
+			return
+			    calculate(
+			        selectedvalue('Dim poste'[intitule_poste]),
+			        treatas(
+			            {PosteSelectionne},
+			            'Dim poste'[poste_sk]
+			        )
+			    )
+		lineageTag: 88d04bd1-ab17-4285-8b0a-1393962c9568
+
+	measure 'Note globale liée à l''offre' =
+			
+			var EntrepriseSelectionnee =
+			    selectedvalue('Fait offres'[entreprise_sk])
+			return
+			    calculate(
+			        average('Fait avis'[note_globale]),
+			        filter(
+			            all('Fait avis'),
+			            'Fait avis'[entreprise_sk] = EntrepriseSelectionnee
+			        )
+			    )
+		lineageTag: 765bc4e0-2276-4acd-81cf-9cb0c8918040
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Note culture liée à l''offre' =
+			
+			var EntrepriseSelectionnee =
+			    selectedvalue('Fait offres'[entreprise_sk])
+			return
+			    calculate(
+			        average(   'Fait avis'[note_culture_valeurs]),
+			        filter(
+			            all('Fait avis'),
+			            'Fait avis'[entreprise_sk] = EntrepriseSelectionnee
+			        )
+			    )
+		lineageTag: 894415f1-3cca-4a1c-b52d-8f4115dcda3e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Note équilibre liée à l''offre' =
+			
+			var EntrepriseSelectionnee =
+			    selectedvalue('Fait offres'[entreprise_sk])
+			return
+			    calculate(
+			        average('Fait avis'[note_equilibre_vie_pro]),
+			        filter(
+			            all('Fait avis'),
+			            'Fait avis'[entreprise_sk] = EntrepriseSelectionnee
+			        )
+			    )
+		lineageTag: 528eaab6-7166-49df-ac74-7f968f517f27
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Note équipe dirigeante liée à l''offre' =
+			
+			var EntrepriseSelectionnee =
+			    selectedvalue('Fait offres'[entreprise_sk])
+			return
+			    calculate(
+			        average('Fait avis'[note_equipe_dirigeante]),
+			        filter(
+			            all('Fait avis'),
+			            'Fait avis'[entreprise_sk] = EntrepriseSelectionnee
+			        )
+			    )
+		lineageTag: 33bc2807-8fdf-4bae-8cf9-1aee39145eb4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Note carrière liée à l''offre' =
+			
+			var EntrepriseSelectionnee =
+			    selectedvalue('Fait offres'[entreprise_sk])
+			return
+			    calculate(
+			        average('Fait avis'[note_opportunites_carriere]),
+			        filter(
+			            all('Fait avis'),
+			            'Fait avis'[entreprise_sk] = EntrepriseSelectionnee
+			        )
+			    )
+		lineageTag: d6c1c7b0-0879-437c-885a-6980a2ae113b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Note rémunération liée à l''offre' =
+			
+			var EntrepriseSelectionnee =
+			    selectedvalue('Fait offres'[entreprise_sk])
+			return
+			    calculate(
+			        average('Fait avis'[note_remuneration_avantages]),
+			        filter(
+			            all('Fait avis'),
+			            'Fait avis'[entreprise_sk] = EntrepriseSelectionnee
+			        )
+			    )
+		lineageTag: f89aa6a9-c1a2-46dc-8c7c-1895fbf3f295
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition Mesures = m
 		mode: import
